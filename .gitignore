@@ -1,0 +1,7 @@
+node_modules
+**/*.sw?
+build/
+.env
+db/**
+**/.DS_Store
+**/*.log
