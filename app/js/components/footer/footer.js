@@ -4,7 +4,7 @@ export default React.createClass({
 
   render() {
     return (
-      <footer>
+      <footer className="main-footer">
         <span>
           Tim C Miller | 2016
         </span>

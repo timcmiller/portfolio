@@ -1,7 +1,7 @@
 //header
 .main-header {
   display: flex;
-  justifiy-content: center;
+  justify-content: center;
   border-bottom: 1px solid black;
 }
 
@@ -12,4 +12,15 @@
   li {
     padding: 10px;
   }
+}
+
+//footer
+.main-footer {
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid black;
+  span {
+    padding: 20px;
+  }
+
 }

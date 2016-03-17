@@ -1,12 +1,18 @@
 import React from 'react';
 
+import Home from './home/home';
+import Projects from './projects/projects';
+import Contact from './contact/contact';
+
 export default React.createClass({
 
   render() {
     return (
-      <p>
-        {this.props.heading}
-      </p>
+      <section>
+        <Home {...this.props} />
+        <Projects {...this.props} />
+        <Contact {...this.props} />
+      </section>
     );
   }
 });
