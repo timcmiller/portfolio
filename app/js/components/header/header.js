@@ -4,9 +4,8 @@ export default React.createClass({
 
   render() {
     return (
-      <header>
-        <nav>
-          <ul>
+      <header className="main-header">
+          <ul className="site-nav">
             <li>
               <a>Home</a>
             </li>
@@ -20,7 +19,6 @@ export default React.createClass({
               <a>Contact</a>
             </li>
           </ul>
-        </nav>
       </header>
     );
   }

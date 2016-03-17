@@ -1,10 +1,20 @@
 var gulp = require('gulp');
 var webpack = require('webpack-stream');
 var babel = require('gulp-babel');
+var sass = require('gulp-sass');
+var maps = require('gulp-sourcemaps');
 
 gulp.task('static:dev', function() {
   return gulp.src('app/**/*.html')
   .pipe(gulp.dest('build/'));
+});
+
+gulp.task('sass:dev', function() {
+  return gulp.src('./app/sass/**.scss')
+  .pipe(maps.init())
+  .pipe(sass().on('error', sass.logError))
+  .pipe(maps.write('./'))
+  .pipe(gulp.dest('build/css'));
 });
 
 gulp.task('webpack:dev', function() {
@@ -30,4 +40,5 @@ gulp.task('webpack:dev', function() {
 });
 
 gulp.task('build', ['static:dev', 'webpack:dev']);
-gulp.task('default', ['build']);
+gulp.task('styles', ['sass:dev']);
+gulp.task('default', ['build', 'styles']);

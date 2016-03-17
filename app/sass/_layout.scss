@@ -1,0 +1,15 @@
+//header
+.main-header {
+  display: flex;
+  justifiy-content: center;
+  border-bottom: 1px solid black;
+}
+
+.site-nav {
+  display: flex;
+  padding: 0px;
+
+  li {
+    padding: 10px;
+  }
+}
