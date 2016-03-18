@@ -17,6 +17,11 @@ gulp.task('sass:dev', function() {
   .pipe(gulp.dest('build/css'));
 });
 
+gulp.task('images:dev', function() {
+  return gulp.src('./app/images/**')
+  .pipe(gulp.dest('build/images'));
+});
+
 gulp.task('webpack:dev', function() {
   return gulp.src('app/js/entry.jsx')
   .pipe(webpack({
@@ -40,5 +45,5 @@ gulp.task('webpack:dev', function() {
 });
 
 gulp.task('build', ['static:dev', 'webpack:dev']);
-gulp.task('styles', ['sass:dev']);
+gulp.task('styles', ['sass:dev', 'images:dev']);
 gulp.task('default', ['build', 'styles']);

@@ -30,6 +30,20 @@
   height: 40%;
 }
 
+.column {
+  flex-direction: column;
+}
+
+.project-container {
+  display: flex;
+  align-items: flex-start;
+}
+
+.project-logo {
+  width: 100px;
+  height: 100px;
+  padding: 25px;
+}
 
 //footer
 .main-footer {
