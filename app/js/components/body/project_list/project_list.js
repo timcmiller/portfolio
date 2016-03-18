@@ -14,7 +14,7 @@ export default React.createClass({
     });
 
     return (
-      <section className="container column">
+      <section className="project-container column">
         {projectNodes}
       </section>
     );
