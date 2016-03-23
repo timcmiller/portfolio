@@ -15,9 +15,15 @@
 }
 
 //body
+
+.intro {
+  text-align: left;
+  width: 35%
+}
+
 .container {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .contact-form {
