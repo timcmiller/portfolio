@@ -8,7 +8,7 @@ export default React.createClass({
 
   render() {
     return (
-      <section>
+      <section className="body">
         <Home {...this.props} />
         <ProjectList {...this.props} />
         <Contact {...this.props} />

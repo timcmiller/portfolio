@@ -15,6 +15,10 @@ export default React.createClass({
 
     return (
       <section className="project-container column">
+        <a name="projects"></a>
+        <h2>
+          Projects
+        </h2>
         {projectNodes}
       </section>
     );
