@@ -1,6 +1,6 @@
 node_modules
 **/*.sw?
-build/
+app/**
 .env
 db/**
 **/.DS_Store
