@@ -15,14 +15,10 @@
 }
 
 //body
-.container {
-  display: flex;
-  justify-content: center;
-}
 
-.contact-form {
-  display: flex;
-  flex-direction: column;
+.intro {
+  text-align: left;
+  width: 35%
 }
 
 .profile-img {
@@ -30,8 +26,17 @@
   height: 40%;
 }
 
+.container {
+  display: flex;
+  justify-content: space-around;
+}
+
 .column {
   flex-direction: column;
+}
+
+.row {
+  flex-direction: row;
 }
 
 .project-container {
@@ -44,6 +49,17 @@
   height: 100px;
   padding: 25px;
 }
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-box {
+  display: flex;
+  flex-direction: column;
+}
+
 
 //footer
 .main-footer {
