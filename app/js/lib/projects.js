@@ -18,7 +18,8 @@ const projects = [
       img: 'cadet.png',
       link: 'http://cadet-lms.herokuapp.com/',
       github: 'https://github.com/cf-lms/lms',
-      year: 2015
+      year: 2015,
+      width: '100px'
     },
     {
       _id: 2,
