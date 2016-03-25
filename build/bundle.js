@@ -21032,12 +21032,19 @@
 	  value: true
 	});
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	exports.default = function () {
 	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
 	  var action = arguments[1];
 
 
 	  switch (action.type) {
+
+	    case 'UPDATE_MODALS':
+	      return _extends({}, state, {
+	        refs: action.refs
+	      });
 
 	    default:
 	      return state;
@@ -21051,7 +21058,8 @@
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	var initialState = {
-	  heading: 'Hello World'
+	  heading: 'Hello World',
+	  refs: {}
 	};
 
 /***/ },
@@ -21063,7 +21071,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	var CHANGE_HEADING = exports.CHANGE_HEADING = 'CHANGE_HEADING';
+	var UPDATE_MODALS = exports.UPDATE_MODALS = 'UPDATE_MODALS';
 
 /***/ },
 /* 180 */
@@ -21083,9 +21091,17 @@
 
 	var _reactRedux = __webpack_require__(169);
 
-	var _dashboard = __webpack_require__(181);
+	var _redux = __webpack_require__(159);
+
+	var _user_interface_actions = __webpack_require__(181);
+
+	var userInterfaceActions = _interopRequireWildcard(_user_interface_actions);
+
+	var _dashboard = __webpack_require__(182);
 
 	var _dashboard2 = _interopRequireDefault(_dashboard);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21100,10 +21116,38 @@
 	  return _extends({}, state.mainReducer);
 	}
 
-	exports.default = (0, _reactRedux.connect)(mapStateToProps)(PortfolioApp);
+	function mapDispatchToProps(dispatch) {
+	  return (0, _redux.bindActionCreators)(_extends({}, userInterfaceActions), dispatch);
+	}
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(PortfolioApp);
 
 /***/ },
 /* 181 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.updateModals = updateModals;
+
+	var _action_types = __webpack_require__(179);
+
+	var types = _interopRequireWildcard(_action_types);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	function updateModals(refs) {
+	  return {
+	    type: types.UPDATE_MODALS,
+	    refs: refs
+	  };
+	}
+
+/***/ },
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21120,15 +21164,15 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _body = __webpack_require__(182);
+	var _body = __webpack_require__(183);
 
 	var _body2 = _interopRequireDefault(_body);
 
-	var _header = __webpack_require__(189);
+	var _header = __webpack_require__(190);
 
 	var _header2 = _interopRequireDefault(_header);
 
-	var _footer = __webpack_require__(190);
+	var _footer = __webpack_require__(194);
 
 	var _footer2 = _interopRequireDefault(_footer);
 
@@ -21140,7 +21184,7 @@
 	    return _react2.default.createElement(
 	      'section',
 	      null,
-	      _react2.default.createElement(_header2.default, null),
+	      _react2.default.createElement(_header2.default, this.props),
 	      _react2.default.createElement(_body2.default, this.props),
 	      _react2.default.createElement(_footer2.default, null)
 	    );
@@ -21148,7 +21192,7 @@
 	});
 
 /***/ },
-/* 182 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21161,15 +21205,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _home = __webpack_require__(183);
+	var _home = __webpack_require__(184);
 
 	var _home2 = _interopRequireDefault(_home);
 
-	var _project_list = __webpack_require__(184);
+	var _project_list = __webpack_require__(185);
 
 	var _project_list2 = _interopRequireDefault(_project_list);
 
-	var _contact = __webpack_require__(188);
+	var _contact = __webpack_require__(189);
 
 	var _contact2 = _interopRequireDefault(_contact);
 
@@ -21181,15 +21225,18 @@
 	    return _react2.default.createElement(
 	      'section',
 	      { className: 'body' },
+	      _react2.default.createElement('a', { name: 'home' }),
 	      _react2.default.createElement(_home2.default, this.props),
+	      _react2.default.createElement('a', { name: 'projects' }),
 	      _react2.default.createElement(_project_list2.default, this.props),
+	      _react2.default.createElement('a', { name: 'contact' }),
 	      _react2.default.createElement(_contact2.default, this.props)
 	    );
 	  }
 	});
 
 /***/ },
-/* 183 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21231,7 +21278,7 @@
 	});
 
 /***/ },
-/* 184 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21246,11 +21293,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _projects = __webpack_require__(185);
+	var _projects = __webpack_require__(186);
 
 	var _projects2 = _interopRequireDefault(_projects);
 
-	var _project = __webpack_require__(186);
+	var _project = __webpack_require__(187);
 
 	var _project2 = _interopRequireDefault(_project);
 
@@ -21270,7 +21317,6 @@
 	    return _react2.default.createElement(
 	      'section',
 	      { className: 'project-container column' },
-	      _react2.default.createElement('a', { name: 'projects' }),
 	      _react2.default.createElement(
 	        'h2',
 	        null,
@@ -21282,7 +21328,7 @@
 	});
 
 /***/ },
-/* 185 */
+/* 186 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -21298,7 +21344,8 @@
 	  img: 'oscar-app.PNG',
 	  link: '',
 	  github: 'https://github.com/timcmiller/oscar_app',
-	  year: 2016
+	  year: 2016,
+	  height: '200px'
 	}, {
 	  _id: 3,
 	  title: 'Cadet',
@@ -21307,7 +21354,8 @@
 	  img: 'cadet.png',
 	  link: 'http://cadet-lms.herokuapp.com/',
 	  github: 'https://github.com/cf-lms/lms',
-	  year: 2015
+	  year: 2015,
+	  width: '100px'
 	}, {
 	  _id: 2,
 	  title: 'Lingo Lemur',
@@ -21325,13 +21373,14 @@
 	  img: 'stg.png',
 	  link: 'http://npmjs.com/sludgy-trucker-coffee',
 	  github: 'https://github.com/timcmiller/sludgy-trucker-coffee',
-	  year: 2015
+	  year: 2015,
+	  width: '200px'
 	}];
 
 	exports.default = projects;
 
 /***/ },
-/* 186 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21344,7 +21393,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _marked = __webpack_require__(187);
+	var _marked = __webpack_require__(188);
 
 	var _marked2 = _interopRequireDefault(_marked);
 
@@ -21357,10 +21406,17 @@
 	    return { __html: rawMarkup };
 	  },
 	  render: function render() {
+	    var techNodes = this.props.tech.map(function (tech, key) {
+	      return _react2.default.createElement(
+	        'span',
+	        { className: 'tech', key: key },
+	        tech
+	      );
+	    });
 	    return _react2.default.createElement(
 	      'article',
 	      { className: 'container' },
-	      _react2.default.createElement('img', { className: 'project-logo', src: "images/" + this.props.img, alt: this.props.title }),
+	      _react2.default.createElement('img', { className: 'project-logo', style: { width: this.props.width, height: this.props.height }, src: "images/" + this.props.img, alt: this.props.title }),
 	      _react2.default.createElement(
 	        'div',
 	        { callName: 'container column' },
@@ -21369,6 +21425,11 @@
 	          'p',
 	          null,
 	          this.props.description
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'techContainer' },
+	          techNodes
 	        )
 	      )
 	    );
@@ -21376,7 +21437,7 @@
 	});
 
 /***/ },
-/* 187 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
@@ -22668,7 +22729,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 188 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22689,7 +22750,6 @@
 	    return _react2.default.createElement(
 	      "section",
 	      null,
-	      _react2.default.createElement("a", { name: "contact" }),
 	      _react2.default.createElement(
 	        "h2",
 	        null,
@@ -22743,10 +22803,10 @@
 	});
 
 /***/ },
-/* 189 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -22756,51 +22816,68 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactSkylight = __webpack_require__(191);
+
+	var _reactSkylight2 = _interopRequireDefault(_reactSkylight);
+
+	var _resume = __webpack_require__(193);
+
+	var _resume2 = _interopRequireDefault(_resume);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = _react2.default.createClass({
-	  displayName: "header",
+	  displayName: 'header',
 	  render: function render() {
+	    var _this = this;
+
 	    return _react2.default.createElement(
-	      "header",
-	      { className: "main-header" },
+	      'header',
+	      { className: 'main-header' },
 	      _react2.default.createElement(
-	        "ul",
-	        { className: "site-nav" },
+	        'ul',
+	        { className: 'site-nav' },
 	        _react2.default.createElement(
-	          "li",
+	          'li',
 	          null,
 	          _react2.default.createElement(
-	            "a",
-	            { href: "#home" },
-	            "Home"
+	            'a',
+	            { className: 'nav-link', href: '#home' },
+	            'Home'
 	          )
 	        ),
 	        _react2.default.createElement(
-	          "li",
+	          'li',
 	          null,
 	          _react2.default.createElement(
-	            "a",
-	            { href: "#projects" },
-	            "Projects"
+	            'a',
+	            { className: 'nav-link', href: '#projects' },
+	            'Projects'
 	          )
 	        ),
 	        _react2.default.createElement(
-	          "li",
+	          'li',
 	          null,
 	          _react2.default.createElement(
-	            "a",
-	            null,
-	            "Resume"
+	            'a',
+	            { className: 'nav-link', onClick: function onClick() {
+	                return _this.refs.customDialog.show();
+	              } },
+	            'Resume'
+	          ),
+	          _react2.default.createElement(
+	            _reactSkylight2.default,
+	            { dialogStyles: _resume2.default, hideOnOverlayClicked: true, ref: 'customDialog', title: 'A Custom Modal' },
+	            _react2.default.createElement('img', { className: 'resume-img', src: 'images/resume.png', alt: 'Resume' })
 	          )
 	        ),
 	        _react2.default.createElement(
-	          "li",
+	          'li',
 	          null,
 	          _react2.default.createElement(
-	            "a",
-	            { href: "#contact" },
-	            "Contact"
+	            'a',
+	            { className: 'nav-link', href: '#contact' },
+	            'Contact'
 	          )
 	        )
 	      )
@@ -22809,7 +22886,246 @@
 	});
 
 /***/ },
-/* 190 */
+/* 191 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _styles = __webpack_require__(192);
+
+	var _styles2 = _interopRequireDefault(_styles);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var SkyLight = (function (_React$Component) {
+	    _inherits(SkyLight, _React$Component);
+
+	    function SkyLight(props) {
+	        _classCallCheck(this, SkyLight);
+
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(SkyLight).call(this, props));
+
+	        _this.state = { isVisible: false };
+	        return _this;
+	    }
+
+	    _createClass(SkyLight, [{
+	        key: 'componentWillUpdate',
+	        value: function componentWillUpdate(nextProps, nextState) {
+	            if (nextState.isVisible && !this.state.isVisible && this.props.beforeOpen) {
+	                this.props.beforeOpen();
+	            }
+
+	            if (!nextState.isVisible && this.state.isVisible && this.props.beforeClose) {
+	                this.props.beforeClose();
+	            }
+	        }
+	    }, {
+	        key: 'componentDidUpdate',
+	        value: function componentDidUpdate(prevProps, prevState) {
+	            if (!prevState.isVisible && this.state.isVisible && this.props.afterOpen) {
+	                this.props.afterOpen();
+	            }
+
+	            if (prevState.isVisible && !this.state.isVisible && this.props.afterClose) {
+	                this.props.afterClose();
+	            }
+	        }
+	    }, {
+	        key: 'show',
+	        value: function show() {
+	            this.setState({ isVisible: true });
+	        }
+	    }, {
+	        key: 'hide',
+	        value: function hide() {
+	            this.setState({ isVisible: false });
+	        }
+	    }, {
+	        key: 'onOverlayClicked',
+	        value: function onOverlayClicked() {
+	            if (this.props.hideOnOverlayClicked) {
+	                this.hide();
+	                if (this.props.onOverlayClicked) {
+	                    this.props.onOverlayClicked();
+	                }
+	            }
+
+	            if (this.props.onOverlayClicked) {
+	                this.props.onOverlayClicked();
+	            }
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var _this2 = this;
+
+	            var overlay;
+
+	            var dialogStyles = Object.assign({}, _styles2.default.dialogStyles, this.props.dialogStyles);
+	            var overlayStyles = Object.assign({}, _styles2.default.overlayStyles, this.props.overlayStyles);
+	            var closeButtonStyle = Object.assign({}, _styles2.default.closeButtonStyle, this.props.closeButtonStyle);
+	            var titleStyle = Object.assign({}, _styles2.default.title, this.props.titleStyle);
+
+	            if (this.state.isVisible) {
+	                overlayStyles.display = 'block';
+	                dialogStyles.display = 'block';
+	            } else {
+	                overlayStyles.display = 'none';
+	                dialogStyles.display = 'none';
+	            }
+
+	            if (this.props.showOverlay) {
+	                overlay = _react2.default.createElement('div', { onClick: function onClick() {
+	                        return _this2.onOverlayClicked();
+	                    }, style: overlayStyles });
+	            }
+
+	            return _react2.default.createElement(
+	                'section',
+	                { className: 'skylight-wrapper' },
+	                overlay,
+	                _react2.default.createElement(
+	                    'div',
+	                    { style: dialogStyles },
+	                    _react2.default.createElement(
+	                        'a',
+	                        { onClick: function onClick() {
+	                                return _this2.hide();
+	                            }, role: 'button', style: closeButtonStyle },
+	                        '×'
+	                    ),
+	                    _react2.default.createElement(
+	                        'h2',
+	                        { style: titleStyle },
+	                        this.props.title
+	                    ),
+	                    this.props.children
+	                )
+	            );
+	        }
+	    }]);
+
+	    return SkyLight;
+	})(_react2.default.Component);
+
+	SkyLight.displayName = 'SkyLight';
+
+	SkyLight.propTypes = {
+	    afterClose: _react2.default.PropTypes.func,
+	    afterOpen: _react2.default.PropTypes.func,
+	    beforeClose: _react2.default.PropTypes.func,
+	    beforeOpen: _react2.default.PropTypes.func,
+	    closeButtonStyle: _react2.default.PropTypes.object,
+	    dialogStyles: _react2.default.PropTypes.object,
+	    hideOnOverlayClicked: _react2.default.PropTypes.bool,
+	    onOverlayClicked: _react2.default.PropTypes.func,
+	    overlayStyles: _react2.default.PropTypes.object,
+	    showOverlay: _react2.default.PropTypes.bool,
+	    title: _react2.default.PropTypes.string,
+	    titleStyle: _react2.default.PropTypes.object
+	};
+
+	SkyLight.defaultProps = {
+	    title: '',
+	    showOverlay: true,
+	    overlayStyles: _styles2.default.overlayStyles,
+	    dialogStyles: _styles2.default.dialogStyles,
+	    closeButtonStyle: _styles2.default.closeButtonStyle,
+	    hideOnOverlayClicked: false
+	};
+
+	exports.default = SkyLight;
+
+/***/ },
+/* 192 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var styles = {
+	  overlayStyles: {
+	    position: 'fixed',
+	    top: 0,
+	    left: 0,
+	    width: '100%',
+	    height: '100%',
+	    zIndex: 99,
+	    backgroundColor: 'rgba(0,0,0,0.3)'
+	  },
+	  dialogStyles: {
+	    width: '50%',
+	    height: '400px',
+	    position: 'fixed',
+	    top: '50%',
+	    left: '50%',
+	    marginTop: '-200px',
+	    marginLeft: '-25%',
+	    backgroundColor: '#fff',
+	    borderRadius: '2px',
+	    zIndex: 100,
+	    padding: '15px',
+	    boxShadow: '0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28)'
+	  },
+	  title: {
+	    marginTop: '0'
+	  },
+	  closeButtonStyle: {
+	    cursor: 'pointer',
+	    position: 'absolute',
+	    fontSize: '1.8em',
+	    right: '10px',
+	    top: '0'
+	  }
+	};
+
+	exports.default = styles;
+
+/***/ },
+/* 193 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var myBigGreenDialog = {
+	  display: 'flex',
+	  justifyContent: 'center',
+	  alignItems: 'center',
+	  backgroundColor: '#00897B',
+	  color: '#ffffff',
+	  width: '70%',
+	  height: '600px',
+	  marginTop: '-300px',
+	  marginLeft: '-35%'
+	};
+
+	exports.default = myBigGreenDialog;
+
+/***/ },
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
