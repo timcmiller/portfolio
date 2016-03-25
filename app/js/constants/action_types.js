@@ -1,1 +1,1 @@
-export const CHANGE_HEADING = 'CHANGE_HEADING';
+export const UPDATE_MODALS = 'UPDATE_MODALS';

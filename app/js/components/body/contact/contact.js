@@ -5,7 +5,6 @@ export default React.createClass({
   render() {
     return (
       <section>
-        <a name="contact"></a>
         <h2>
           Contact
         </h2>

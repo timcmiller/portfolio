@@ -7,7 +7,8 @@ const projects = [
       img: 'oscar-app.PNG',
       link: '',
       github: 'https://github.com/timcmiller/oscar_app',
-      year: 2016
+      year: 2016,
+      height: '200px'
     },
     {
       _id: 3,
@@ -17,7 +18,8 @@ const projects = [
       img: 'cadet.png',
       link: 'http://cadet-lms.herokuapp.com/',
       github: 'https://github.com/cf-lms/lms',
-      year: 2015
+      year: 2015,
+      width: '100px'
     },
     {
       _id: 2,
@@ -37,7 +39,8 @@ const projects = [
       img: 'stg.png',
       link: 'http://npmjs.com/sludgy-trucker-coffee',
       github: 'https://github.com/timcmiller/sludgy-trucker-coffee',
-      year: 2015
+      year: 2015,
+      width: '200px'
     }
   ];
 

@@ -10,7 +10,7 @@ export default React.createClass({
   render() {
     return (
       <section>
-        <PortfolioHeader />
+        <PortfolioHeader {...this.props} />
         <PortfolioBody {...this.props} />
         <PortfolioFooter />
       </section>

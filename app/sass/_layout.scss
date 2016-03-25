@@ -60,6 +60,18 @@
   flex-direction: column;
 }
 
+.tech {
+  border: 1px solid grey;
+  margin: 5px;
+  padding: 5px;
+  background-color: grey;
+}
+
+.techContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 
 //footer
 .main-footer {
@@ -70,4 +82,11 @@
     padding: 20px 3px 20px 3px;
   }
 
+}
+
+
+//imgs
+.resume-img {
+  width: 70%;
+  height: 90%;
 }
