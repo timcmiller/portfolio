@@ -21342,8 +21342,7 @@
 	  description: 'React Native mobile app available on the ExponentJS platform for both Android and iOS. Developed with Redux to help manage the state of the application.',
 	  tech: ['JavaScript', 'React Native', 'Redux', 'ES6', 'ExponentJS', 'iOS', 'Android'],
 	  img: 'oscar-app.PNG',
-	  link: '',
-	  github: 'https://github.com/timcmiller/oscar_app',
+	  links: [{ site: 'github', icon: 'icon-github', link: 'https://github.com/timcmiller/oscar_app' }],
 	  year: 2016,
 	  height: '200px'
 	}, {
@@ -21352,8 +21351,7 @@
 	  description: 'Learning Management System built for programming and code driven education programs requested by my alma mater, Code Fellows.',
 	  tech: ['JavaScript', 'SASS', 'React', 'Redux', 'Mocha/Chai', 'Babel', 'Gulp', 'Express', 'MongoDB', 'Webpack'],
 	  img: 'cadet.png',
-	  link: 'http://cadet-lms.herokuapp.com/',
-	  github: 'https://github.com/cf-lms/lms',
+	  links: [{ site: 'web', icon: 'icon-sphere', link: 'http://cadet-lms.herokuapp.com/' }, { site: 'github', icon: 'icon-github', link: 'https://github.com/cf-lms' }, { site: 'npm', icon: 'icon-npm', link: 'https://www.npmjs.com/package/cadet-parser' }],
 	  year: 2015,
 	  width: '100px'
 	}, {
@@ -21362,8 +21360,7 @@
 	  description: 'Multi-lingual, natural language processing web app that returns the hidden sentiment of plain text or tweets.',
 	  tech: ['JavaScript', 'Express', 'MongoDB', 'Mocha/Chai', 'TravisCI', 'Twitter API', 'Foundations'],
 	  img: 'lingo-lemur.png',
-	  link: 'http://lingolemur.com',
-	  github: 'https://github.com/timcmiller/nlp_project',
+	  links: [{ site: 'web', icon: 'icon-sphere', link: 'http://lingolemur.com' }, { site: 'github', icon: 'icon-github', link: 'https://github.com/timcmiller/lms' }],
 	  year: 2015
 	}, {
 	  _id: 1,
@@ -21371,8 +21368,7 @@
 	  description: 'Node backed framework published as an npm package that streamlines http server creation.',
 	  tech: ['JavaScript', 'Gulp', 'Mocha/Chai'],
 	  img: 'stg.png',
-	  link: 'http://npmjs.com/sludgy-trucker-coffee',
-	  github: 'https://github.com/timcmiller/sludgy-trucker-coffee',
+	  links: [{ site: 'github', icon: 'icon-github', link: 'https://github.com/timcmiller/sludgy-trucker-coffee' }, { site: 'npm', icon: 'icon-npm', link: 'http://npmjs.com/sludgy-trucker-coffee' }],
 	  year: 2015,
 	  width: '200px'
 	}];
@@ -21413,6 +21409,15 @@
 	        tech
 	      );
 	    });
+
+	    var linkNodes = this.props.links.map(function (link, key) {
+	      return _react2.default.createElement(
+	        'a',
+	        { href: link.link, alt: this.props.title + ' ' + link.site, className: 'icon-link', key: key },
+	        _react2.default.createElement('span', { className: link.icon + " icons" })
+	      );
+	    }.bind(this));
+
 	    return _react2.default.createElement(
 	      'article',
 	      { className: 'container' },
@@ -21430,7 +21435,8 @@
 	          'div',
 	          { className: 'techContainer' },
 	          techNodes
-	        )
+	        ),
+	        linkNodes
 	      )
 	    );
 	  }
@@ -23168,8 +23174,8 @@
 	      ),
 	      _react2.default.createElement(
 	        "a",
-	        { href: "https://github.com/timcmiller" },
-	        _react2.default.createElement("span", { className: "icon-github" })
+	        { className: "icon-link", href: "https://github.com/timcmiller" },
+	        _react2.default.createElement("span", { className: "icon-github icons" })
 	      ),
 	      _react2.default.createElement(
 	        "span",
@@ -23178,8 +23184,8 @@
 	      ),
 	      _react2.default.createElement(
 	        "a",
-	        { href: "https://twitter.com/TimCMiller" },
-	        _react2.default.createElement("span", { className: "icon-twitter" })
+	        { className: "icon-link", href: "https://twitter.com/TimCMiller" },
+	        _react2.default.createElement("span", { className: "icon-twitter icons" })
 	      ),
 	      _react2.default.createElement(
 	        "span",
@@ -23188,8 +23194,8 @@
 	      ),
 	      _react2.default.createElement(
 	        "a",
-	        { href: "https://www.linkedin.com/in/timcmiller1" },
-	        _react2.default.createElement("span", { className: "icon-linkedin" })
+	        { className: "icon-link", href: "https://www.linkedin.com/in/timcmiller1" },
+	        _react2.default.createElement("span", { className: "icon-linkedin icons" })
 	      ),
 	      _react2.default.createElement(
 	        "span",

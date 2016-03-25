@@ -14,8 +14,17 @@ export default React.createClass({
         <span className="tech" key={key}>
           {tech}
         </span>
-        )
+      );
     })
+
+    var linkNodes = this.props.links.map(function(link, key) {
+      return (
+        <a href={link.link} alt={this.props.title + ' ' + link.site} className="icon-link" key={key}>
+          <span className={link.icon + " icons"}></span>
+        </a>
+      );
+    }.bind(this))
+
     return (
       <article className="container">
         <img className="project-logo" style={{width: this.props.width, height: this.props.height}} src={"images/" + this.props.img} alt={this.props.title} />
@@ -27,6 +36,7 @@ export default React.createClass({
           <div className="techContainer">
             {techNodes}
           </div>
+          {linkNodes}
         </div>
       </article>
     );

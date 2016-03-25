@@ -17,22 +17,22 @@ export default React.createClass({
         <span>
           |
         </span>
-        <a href="https://github.com/timcmiller">
-          <span className="icon-github">
+        <a className="icon-link" href="https://github.com/timcmiller">
+          <span className="icon-github icons">
           </span>
         </a>
         <span>
           |
         </span>
-        <a href="https://twitter.com/TimCMiller">
-          <span className="icon-twitter">
+        <a className="icon-link" href="https://twitter.com/TimCMiller">
+          <span className="icon-twitter icons">
           </span>
         </a>
         <span>
           |
         </span>
-        <a href="https://www.linkedin.com/in/timcmiller1">
-          <span className="icon-linkedin">
+        <a className="icon-link" href="https://www.linkedin.com/in/timcmiller1">
+          <span className="icon-linkedin icons">
           </span>
         </a>
         <span>
