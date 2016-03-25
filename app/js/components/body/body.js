@@ -9,8 +9,11 @@ export default React.createClass({
   render() {
     return (
       <section className="body">
+        <a name="home"></a>
         <Home {...this.props} />
+        <a name="projects"></a>
         <ProjectList {...this.props} />
+        <a name="contact"></a>
         <Contact {...this.props} />
       </section>
     );
