@@ -2,7 +2,11 @@
 .main-header {
   display: flex;
   justify-content: center;
+  position: fixed;
+  width: 100%;
+  background: white;
   border-bottom: 1px solid black;
+  top: 0px;
 }
 
 .site-nav {
