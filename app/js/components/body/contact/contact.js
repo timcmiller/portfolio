@@ -17,7 +17,7 @@ export default React.createClass({
               </label>
               <label className="input-box">
                 <span>*Email:</span>
-                <input className="input" type="text" placeholder="Subject" />
+                <input className="input" type="text" placeholder="Email" />
               </label>
             </div>
             <label className="input-box">

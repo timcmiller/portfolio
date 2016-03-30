@@ -8,7 +8,7 @@ export default React.createClass({
       <header className="main-header">
           <ul className="site-nav">
             <li>
-              <a className="nav-link" href="#home">Home</a>
+              <a className="nav-link" href="#about">About</a>
             </li>
             <li>
               <a className="nav-link" href="#projects">Projects</a>
