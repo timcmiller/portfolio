@@ -10,19 +10,19 @@ export default React.createClass({
         </h2>
         <div className="container">
           <form className="contact-form">
-            <div className="container row">
+            <div className="container row style-1">
               <label className="input-box">
                 <span>*Name:</span>
-                <input type="text" placeholder="Name" />
+                <input className="input" type="text" placeholder="Name" />
               </label>
               <label className="input-box">
                 <span>*Email:</span>
-                <input type="text" placeholder="Subject" />
+                <input className="input" type="text" placeholder="Subject" />
               </label>
             </div>
             <label className="input-box">
               Message:
-              <textarea row="6" columns="15"></textarea>
+              <textarea className="input"></textarea>
             </label>
             <button className="btn confirm" type="button">Send</button>
           </form>
