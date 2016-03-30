@@ -1,22 +1,20 @@
 import React from 'react';
-
+import ResumeStyles from './../../styles/resume';
 export default React.createClass({
 
   render() {
+
     return (
       <header className="main-header">
           <ul className="site-nav">
             <li>
-              <a>Home</a>
+              <a className="nav-link" href="#about">About</a>
             </li>
             <li>
-              <a>Projects</a>
+              <a className="nav-link" href="#projects">Projects</a>
             </li>
             <li>
-              <a>Resume</a>
-            </li>
-            <li>
-              <a>Contact</a>
+              <a className="nav-link" href="#contact">Contact</a>
             </li>
           </ul>
       </header>

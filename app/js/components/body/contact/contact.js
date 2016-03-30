@@ -4,24 +4,29 @@ export default React.createClass({
 
   render() {
     return (
-      <section className="container">
-        <form className="contact-form">
-          <div className="container row">
+      <section>
+        <h2>
+          Contact
+        </h2>
+        <div className="container">
+          <form className="contact-form">
+            <div className="container row style-1">
+              <label className="input-box">
+                <span>*Name:</span>
+                <input className="input" type="text" placeholder="Name" />
+              </label>
+              <label className="input-box">
+                <span>*Email:</span>
+                <input className="input" type="text" placeholder="Email" />
+              </label>
+            </div>
             <label className="input-box">
-              <span>*Name:</span>
-              <input type="text" placeholder="Name" />
+              Message:
+              <textarea className="input"></textarea>
             </label>
-            <label className="input-box">
-              <span>*Email:</span>
-              <input type="text" placeholder="Subject" />
-            </label>
-          </div>
-          <label className="input-box">
-            Message:
-            <textarea row="6" columns="15"></textarea>
-          </label>
-          <button className="btn confirm" type="button">Send</button>
-        </form>
+            <button className="btn confirm" type="button">Send</button>
+          </form>
+        </div>
       </section>
     );
   }

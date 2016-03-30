@@ -2,7 +2,11 @@
 .main-header {
   display: flex;
   justify-content: center;
+  position: fixed;
+  width: 100%;
+  background: white;
   border-bottom: 1px solid black;
+  top: 0px;
 }
 
 .site-nav {
@@ -22,8 +26,8 @@
 }
 
 .profile-img {
-  width: 40%;
-  height: 40%;
+  width: 300px;
+  height: 300px;
 }
 
 .container {
@@ -60,14 +64,35 @@
   flex-direction: column;
 }
 
+.tech {
+  border: 1px solid grey;
+  margin: 5px;
+  padding: 10px;
+  background-color: grey;
+  border-radius: 5px;
+  color: white;
+}
+
+.techContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 
 //footer
 .main-footer {
   display: flex;
   justify-content: center;
   border-top: 1px solid black;
-  span {
-    padding: 20px;
+  * {
+    padding: 20px 3px 20px 3px;
   }
 
+}
+
+
+//imgs
+.resume-img {
+  width: 70%;
+  height: 90%;
 }

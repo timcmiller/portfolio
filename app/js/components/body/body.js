@@ -8,9 +8,12 @@ export default React.createClass({
 
   render() {
     return (
-      <section>
+      <section className="body">
+        <a className="page-links" name="about"></a>
         <Home {...this.props} />
+        <a className="page-links" name="projects"></a>
         <ProjectList {...this.props} />
+        <a className="page-links" name="contact"></a>
         <Contact {...this.props} />
       </section>
     );

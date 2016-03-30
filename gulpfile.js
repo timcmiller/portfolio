@@ -22,6 +22,11 @@ gulp.task('images:dev', function() {
   .pipe(gulp.dest('build/images'));
 });
 
+gulp.task('fonts:dev', function() {
+  return gulp.src('./app/sass/icons/fonts/**')
+  .pipe(gulp.dest('build/css/fonts'));
+});
+
 gulp.task('webpack:dev', function() {
   return gulp.src('app/js/entry.jsx')
   .pipe(webpack({
@@ -45,5 +50,5 @@ gulp.task('webpack:dev', function() {
 });
 
 gulp.task('build', ['static:dev', 'webpack:dev']);
-gulp.task('styles', ['sass:dev', 'images:dev']);
+gulp.task('styles', ['sass:dev', 'images:dev', 'fonts:dev']);
 gulp.task('default', ['build', 'styles']);
