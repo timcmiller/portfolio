@@ -8,8 +8,7 @@ const projects = [
       links: [
         {site: 'github', icon:'icon-github', link:'https://github.com/timcmiller/oscar_app'}
         ],
-      year: 2016,
-      height: '200px'
+      year: 2016
     },
     {
       _id: 3,
@@ -22,8 +21,7 @@ const projects = [
         {site:'github', icon:'icon-github', link:'https://github.com/cf-lms'},
         {site:'npm', icon:'icon-npm', link:'https://www.npmjs.com/package/cadet-parser'}
       ],
-      year: 2015,
-      width: '100px'
+      year: 2015
     },
     {
       _id: 2,
@@ -47,8 +45,7 @@ const projects = [
         {site:'github', icon:'icon-github', link:'https://github.com/timcmiller/sludgy-trucker-coffee'},
         {site:'npm', icon:'icon-npm', link:'http://npmjs.com/sludgy-trucker-coffee'}
         ],
-      year: 2015,
-      width: '200px'
+      year: 2015
     }
   ];
 

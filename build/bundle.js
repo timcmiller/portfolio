@@ -21172,7 +21172,7 @@
 
 	var _header2 = _interopRequireDefault(_header);
 
-	var _footer = __webpack_require__(194);
+	var _footer = __webpack_require__(192);
 
 	var _footer2 = _interopRequireDefault(_footer);
 
@@ -21225,11 +21225,11 @@
 	    return _react2.default.createElement(
 	      'section',
 	      { className: 'body' },
-	      _react2.default.createElement('a', { name: 'home' }),
+	      _react2.default.createElement('a', { className: 'page-links', name: 'about' }),
 	      _react2.default.createElement(_home2.default, this.props),
-	      _react2.default.createElement('a', { name: 'projects' }),
+	      _react2.default.createElement('a', { className: 'page-links', name: 'projects' }),
 	      _react2.default.createElement(_project_list2.default, this.props),
-	      _react2.default.createElement('a', { name: 'contact' }),
+	      _react2.default.createElement('a', { className: 'page-links', name: 'contact' }),
 	      _react2.default.createElement(_contact2.default, this.props)
 	    );
 	  }
@@ -21257,11 +21257,10 @@
 	    return _react2.default.createElement(
 	      "section",
 	      null,
-	      _react2.default.createElement("a", { name: "home" }),
 	      _react2.default.createElement(
 	        "h2",
 	        null,
-	        "Home"
+	        "About"
 	      ),
 	      _react2.default.createElement(
 	        "div",
@@ -21269,7 +21268,7 @@
 	        _react2.default.createElement(
 	          "p",
 	          { className: "intro" },
-	          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+	          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec efficitur sapien erat, at rutrum est ultrices vel. Sed non arcu consectetur, ornare metus eu, elementum diam. Sed a pharetra mauris. Curabitur in justo non quam consectetur ornare eget nec nisl. Integer ut rhoncus massa. Curabitur nec ultricies lacus. Quisque sit amet iaculis odio. In nec enim nulla. Etiam sem orci, tincidunt id suscipit id, facilisis ac massa. Maecenas nec posuere neque. Curabitur id sapien dui. Suspendisse quam leo, bibendum vel erat vel, congue auctor odio. Vestibulum ac tincidunt erat. Etiam sit amet elit orci. Nam cursus dolor ut neque vestibulum euismod. In quis dapibus sem. Nam iaculis ornare lacus, sodales mattis sapien tempor id. Donec scelerisque elementum augue, in mollis eros tincidunt id. Pellentesque ultricies dapibus ante sed egestas. Maecenas sed ligula non enim tincidunt tempus. Proin gravida nisi et purus volutpat venenatis."
 	        ),
 	        _react2.default.createElement("img", { className: "profile-img", src: "images/profile.png", alt: "Tim C Miller" })
 	      )
@@ -21343,8 +21342,7 @@
 	  tech: ['JavaScript', 'React Native', 'Redux', 'ES6', 'ExponentJS', 'iOS', 'Android'],
 	  img: 'oscar-app.PNG',
 	  links: [{ site: 'github', icon: 'icon-github', link: 'https://github.com/timcmiller/oscar_app' }],
-	  year: 2016,
-	  height: '200px'
+	  year: 2016
 	}, {
 	  _id: 3,
 	  title: 'Cadet',
@@ -21352,8 +21350,7 @@
 	  tech: ['JavaScript', 'SASS', 'React', 'Redux', 'Mocha/Chai', 'Babel', 'Gulp', 'Express', 'MongoDB', 'Webpack'],
 	  img: 'cadet.png',
 	  links: [{ site: 'web', icon: 'icon-sphere', link: 'http://cadet-lms.herokuapp.com/' }, { site: 'github', icon: 'icon-github', link: 'https://github.com/cf-lms' }, { site: 'npm', icon: 'icon-npm', link: 'https://www.npmjs.com/package/cadet-parser' }],
-	  year: 2015,
-	  width: '100px'
+	  year: 2015
 	}, {
 	  _id: 2,
 	  title: 'Lingo Lemur',
@@ -21369,8 +21366,7 @@
 	  tech: ['JavaScript', 'Gulp', 'Mocha/Chai'],
 	  img: 'stg.png',
 	  links: [{ site: 'github', icon: 'icon-github', link: 'https://github.com/timcmiller/sludgy-trucker-coffee' }, { site: 'npm', icon: 'icon-npm', link: 'http://npmjs.com/sludgy-trucker-coffee' }],
-	  year: 2015,
-	  width: '200px'
+	  year: 2015
 	}];
 
 	exports.default = projects;
@@ -22769,7 +22765,7 @@
 	          { className: "contact-form" },
 	          _react2.default.createElement(
 	            "div",
-	            { className: "container row" },
+	            { className: "container row style-1" },
 	            _react2.default.createElement(
 	              "label",
 	              { className: "input-box" },
@@ -22778,7 +22774,7 @@
 	                null,
 	                "*Name:"
 	              ),
-	              _react2.default.createElement("input", { type: "text", placeholder: "Name" })
+	              _react2.default.createElement("input", { className: "input", type: "text", placeholder: "Name" })
 	            ),
 	            _react2.default.createElement(
 	              "label",
@@ -22788,14 +22784,14 @@
 	                null,
 	                "*Email:"
 	              ),
-	              _react2.default.createElement("input", { type: "text", placeholder: "Subject" })
+	              _react2.default.createElement("input", { className: "input", type: "text", placeholder: "Email" })
 	            )
 	          ),
 	          _react2.default.createElement(
 	            "label",
 	            { className: "input-box" },
 	            "Message:",
-	            _react2.default.createElement("textarea", { row: "6", columns: "15" })
+	            _react2.default.createElement("textarea", { className: "input" })
 	          ),
 	          _react2.default.createElement(
 	            "button",
@@ -22822,11 +22818,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactSkylight = __webpack_require__(191);
-
-	var _reactSkylight2 = _interopRequireDefault(_reactSkylight);
-
-	var _resume = __webpack_require__(193);
+	var _resume = __webpack_require__(191);
 
 	var _resume2 = _interopRequireDefault(_resume);
 
@@ -22835,7 +22827,6 @@
 	exports.default = _react2.default.createClass({
 	  displayName: 'header',
 	  render: function render() {
-	    var _this = this;
 
 	    return _react2.default.createElement(
 	      'header',
@@ -22848,8 +22839,8 @@
 	          null,
 	          _react2.default.createElement(
 	            'a',
-	            { className: 'nav-link', href: '#home' },
-	            'Home'
+	            { className: 'nav-link', href: '#about' },
+	            'About'
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -22859,22 +22850,6 @@
 	            'a',
 	            { className: 'nav-link', href: '#projects' },
 	            'Projects'
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'li',
-	          null,
-	          _react2.default.createElement(
-	            'a',
-	            { className: 'nav-link', onClick: function onClick() {
-	                return _this.refs.customDialog.show();
-	              } },
-	            'Resume'
-	          ),
-	          _react2.default.createElement(
-	            _reactSkylight2.default,
-	            { dialogStyles: _resume2.default, hideOnOverlayClicked: true, ref: 'customDialog', title: 'A Custom Modal' },
-	            _react2.default.createElement('img', { className: 'resume-img', src: 'images/resume.png', alt: 'Resume' })
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -22893,222 +22868,6 @@
 
 /***/ },
 /* 191 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _styles = __webpack_require__(192);
-
-	var _styles2 = _interopRequireDefault(_styles);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var SkyLight = (function (_React$Component) {
-	    _inherits(SkyLight, _React$Component);
-
-	    function SkyLight(props) {
-	        _classCallCheck(this, SkyLight);
-
-	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(SkyLight).call(this, props));
-
-	        _this.state = { isVisible: false };
-	        return _this;
-	    }
-
-	    _createClass(SkyLight, [{
-	        key: 'componentWillUpdate',
-	        value: function componentWillUpdate(nextProps, nextState) {
-	            if (nextState.isVisible && !this.state.isVisible && this.props.beforeOpen) {
-	                this.props.beforeOpen();
-	            }
-
-	            if (!nextState.isVisible && this.state.isVisible && this.props.beforeClose) {
-	                this.props.beforeClose();
-	            }
-	        }
-	    }, {
-	        key: 'componentDidUpdate',
-	        value: function componentDidUpdate(prevProps, prevState) {
-	            if (!prevState.isVisible && this.state.isVisible && this.props.afterOpen) {
-	                this.props.afterOpen();
-	            }
-
-	            if (prevState.isVisible && !this.state.isVisible && this.props.afterClose) {
-	                this.props.afterClose();
-	            }
-	        }
-	    }, {
-	        key: 'show',
-	        value: function show() {
-	            this.setState({ isVisible: true });
-	        }
-	    }, {
-	        key: 'hide',
-	        value: function hide() {
-	            this.setState({ isVisible: false });
-	        }
-	    }, {
-	        key: 'onOverlayClicked',
-	        value: function onOverlayClicked() {
-	            if (this.props.hideOnOverlayClicked) {
-	                this.hide();
-	                if (this.props.onOverlayClicked) {
-	                    this.props.onOverlayClicked();
-	                }
-	            }
-
-	            if (this.props.onOverlayClicked) {
-	                this.props.onOverlayClicked();
-	            }
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            var _this2 = this;
-
-	            var overlay;
-
-	            var dialogStyles = Object.assign({}, _styles2.default.dialogStyles, this.props.dialogStyles);
-	            var overlayStyles = Object.assign({}, _styles2.default.overlayStyles, this.props.overlayStyles);
-	            var closeButtonStyle = Object.assign({}, _styles2.default.closeButtonStyle, this.props.closeButtonStyle);
-	            var titleStyle = Object.assign({}, _styles2.default.title, this.props.titleStyle);
-
-	            if (this.state.isVisible) {
-	                overlayStyles.display = 'block';
-	                dialogStyles.display = 'block';
-	            } else {
-	                overlayStyles.display = 'none';
-	                dialogStyles.display = 'none';
-	            }
-
-	            if (this.props.showOverlay) {
-	                overlay = _react2.default.createElement('div', { onClick: function onClick() {
-	                        return _this2.onOverlayClicked();
-	                    }, style: overlayStyles });
-	            }
-
-	            return _react2.default.createElement(
-	                'section',
-	                { className: 'skylight-wrapper' },
-	                overlay,
-	                _react2.default.createElement(
-	                    'div',
-	                    { style: dialogStyles },
-	                    _react2.default.createElement(
-	                        'a',
-	                        { onClick: function onClick() {
-	                                return _this2.hide();
-	                            }, role: 'button', style: closeButtonStyle },
-	                        '×'
-	                    ),
-	                    _react2.default.createElement(
-	                        'h2',
-	                        { style: titleStyle },
-	                        this.props.title
-	                    ),
-	                    this.props.children
-	                )
-	            );
-	        }
-	    }]);
-
-	    return SkyLight;
-	})(_react2.default.Component);
-
-	SkyLight.displayName = 'SkyLight';
-
-	SkyLight.propTypes = {
-	    afterClose: _react2.default.PropTypes.func,
-	    afterOpen: _react2.default.PropTypes.func,
-	    beforeClose: _react2.default.PropTypes.func,
-	    beforeOpen: _react2.default.PropTypes.func,
-	    closeButtonStyle: _react2.default.PropTypes.object,
-	    dialogStyles: _react2.default.PropTypes.object,
-	    hideOnOverlayClicked: _react2.default.PropTypes.bool,
-	    onOverlayClicked: _react2.default.PropTypes.func,
-	    overlayStyles: _react2.default.PropTypes.object,
-	    showOverlay: _react2.default.PropTypes.bool,
-	    title: _react2.default.PropTypes.string,
-	    titleStyle: _react2.default.PropTypes.object
-	};
-
-	SkyLight.defaultProps = {
-	    title: '',
-	    showOverlay: true,
-	    overlayStyles: _styles2.default.overlayStyles,
-	    dialogStyles: _styles2.default.dialogStyles,
-	    closeButtonStyle: _styles2.default.closeButtonStyle,
-	    hideOnOverlayClicked: false
-	};
-
-	exports.default = SkyLight;
-
-/***/ },
-/* 192 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var styles = {
-	  overlayStyles: {
-	    position: 'fixed',
-	    top: 0,
-	    left: 0,
-	    width: '100%',
-	    height: '100%',
-	    zIndex: 99,
-	    backgroundColor: 'rgba(0,0,0,0.3)'
-	  },
-	  dialogStyles: {
-	    width: '50%',
-	    height: '400px',
-	    position: 'fixed',
-	    top: '50%',
-	    left: '50%',
-	    marginTop: '-200px',
-	    marginLeft: '-25%',
-	    backgroundColor: '#fff',
-	    borderRadius: '2px',
-	    zIndex: 100,
-	    padding: '15px',
-	    boxShadow: '0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28)'
-	  },
-	  title: {
-	    marginTop: '0'
-	  },
-	  closeButtonStyle: {
-	    cursor: 'pointer',
-	    position: 'absolute',
-	    fontSize: '1.8em',
-	    right: '10px',
-	    top: '0'
-	  }
-	};
-
-	exports.default = styles;
-
-/***/ },
-/* 193 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -23131,7 +22890,7 @@
 	exports.default = myBigGreenDialog;
 
 /***/ },
-/* 194 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";

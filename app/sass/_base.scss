@@ -2,6 +2,11 @@ ul {
   list-style-type: none;
 }
 
+textarea {
+  resize: none;
+  height: 100px;
+}
+
 .body {
   section {
     padding: 20px;
@@ -17,4 +22,22 @@ ul {
 
 .icon-link {
   text-decoration: none;
+}
+
+.input {
+  display: block;
+  margin: 15px;
+  padding: 10px;
+  font-family: sans-serif;
+  font-size: 18px;
+  appearance: none;
+  box-shadow: none;
+  border-radius: none;
+  border: solid 1px #dcdcdc;
+  transition: box-shadow 0.3s, border 0.3s;
+}
+
+.page-links {
+  display: block;
+  padding: 10px;
 }

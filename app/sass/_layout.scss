@@ -2,7 +2,11 @@
 .main-header {
   display: flex;
   justify-content: center;
+  position: fixed;
+  width: 100%;
+  background: white;
   border-bottom: 1px solid black;
+  top: 0px;
 }
 
 .site-nav {
@@ -22,8 +26,8 @@
 }
 
 .profile-img {
-  width: 40%;
-  height: 40%;
+  width: 300px;
+  height: 300px;
 }
 
 .container {
@@ -63,8 +67,10 @@
 .tech {
   border: 1px solid grey;
   margin: 5px;
-  padding: 5px;
+  padding: 10px;
   background-color: grey;
+  border-radius: 5px;
+  color: white;
 }
 
 .techContainer {

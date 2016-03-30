@@ -427,10 +427,19 @@ th {
 .icons:hover {
   font-size: 30px; }
 
+.input:focus {
+  outline: none;
+  border: solid 1px #707070;
+  box-shadow: 0 0 5px 1px #969696; }
+
 .main-header {
   display: flex;
   justify-content: center;
-  border-bottom: 1px solid black; }
+  position: fixed;
+  width: 100%;
+  background: white;
+  border-bottom: 1px solid black;
+  top: 0px; }
 
 .site-nav {
   display: flex;
@@ -443,8 +452,8 @@ th {
   width: 35%; }
 
 .profile-img {
-  width: 40%;
-  height: 40%; }
+  width: 300px;
+  height: 300px; }
 
 .container {
   display: flex;
@@ -476,8 +485,10 @@ th {
 .tech {
   border: 1px solid grey;
   margin: 5px;
-  padding: 5px;
-  background-color: grey; }
+  padding: 10px;
+  background-color: grey;
+  border-radius: 5px;
+  color: white; }
 
 .techContainer {
   display: flex;
@@ -497,6 +508,10 @@ th {
 ul {
   list-style-type: none; }
 
+textarea {
+  resize: none;
+  height: 100px; }
+
 .body section {
   padding: 20px;
   margin: 100px;
@@ -508,5 +523,21 @@ ul {
 
 .icon-link {
   text-decoration: none; }
+
+.input {
+  display: block;
+  margin: 15px;
+  padding: 10px;
+  font-family: sans-serif;
+  font-size: 18px;
+  appearance: none;
+  box-shadow: none;
+  border-radius: none;
+  border: solid 1px #dcdcdc;
+  transition: box-shadow 0.3s, border 0.3s; }
+
+.page-links {
+  display: block;
+  padding: 10px; }
 
 /*# sourceMappingURL=application.css.map */
