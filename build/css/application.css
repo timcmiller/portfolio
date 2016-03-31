@@ -457,7 +457,8 @@ th {
 
 .container {
   display: flex;
-  justify-content: space-around; }
+  justify-content: space-around;
+  margin: 20px 0px 10px 0px; }
 
 .column {
   flex-direction: column; }
