@@ -21225,11 +21225,11 @@
 	    return _react2.default.createElement(
 	      'section',
 	      { className: 'body' },
-	      _react2.default.createElement('a', { className: 'page-links', name: 'about' }),
+	      _react2.default.createElement('a', { className: 'page-links', id: 'about' }),
 	      _react2.default.createElement(_home2.default, this.props),
-	      _react2.default.createElement('a', { className: 'page-links', name: 'projects' }),
+	      _react2.default.createElement('a', { className: 'page-links', id: 'projects' }),
 	      _react2.default.createElement(_project_list2.default, this.props),
-	      _react2.default.createElement('a', { className: 'page-links', name: 'contact' }),
+	      _react2.default.createElement('a', { className: 'page-links', id: 'contact' }),
 	      _react2.default.createElement(_contact2.default, this.props)
 	    );
 	  }
@@ -22839,7 +22839,7 @@
 	          null,
 	          _react2.default.createElement(
 	            'a',
-	            { className: 'nav-link', href: '#about' },
+	            { className: 'nav-link smoothScroll', href: '#about' },
 	            'About'
 	          )
 	        ),
@@ -22848,7 +22848,7 @@
 	          null,
 	          _react2.default.createElement(
 	            'a',
-	            { className: 'nav-link', href: '#projects' },
+	            { className: 'nav-link smoothScroll', href: '#projects' },
 	            'Projects'
 	          )
 	        ),
@@ -22857,7 +22857,7 @@
 	          null,
 	          _react2.default.createElement(
 	            'a',
-	            { className: 'nav-link', href: '#contact' },
+	            { className: 'nav-link smoothScroll', href: '#contact' },
 	            'Contact'
 	          )
 	        )

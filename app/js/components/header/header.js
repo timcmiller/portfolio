@@ -1,5 +1,6 @@
 import React from 'react';
 import ResumeStyles from './../../styles/resume';
+
 export default React.createClass({
 
   render() {
@@ -8,13 +9,13 @@ export default React.createClass({
       <header className="main-header">
           <ul className="site-nav">
             <li>
-              <a className="nav-link" href="#about">About</a>
+              <a className="nav-link smoothScroll" href="#about">About</a>
             </li>
             <li>
-              <a className="nav-link" href="#projects">Projects</a>
+              <a className="nav-link smoothScroll" href="#projects">Projects</a>
             </li>
             <li>
-              <a className="nav-link" href="#contact">Contact</a>
+              <a className="nav-link smoothScroll" href="#contact">Contact</a>
             </li>
           </ul>
       </header>

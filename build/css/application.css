@@ -432,18 +432,6 @@ th {
   border: solid 1px #707070;
   box-shadow: 0 0 5px 1px #969696; }
 
-.page-links[name="about"]:target ~ .body section {
-  -webkit-transform: translateY(0px);
-  transform: translateY(0px); }
-
-.page-links[name="projects"]:target ~ .body section {
-  -webkit-transform: translateY(-500px);
-  transform: translateY(-500px); }
-
-.page-links[name="contact"]:target ~ .body section {
-  -webkit-transform: translateY(-1000px);
-  transform: translateY(-1000px); }
-
 .main-header {
   display: flex;
   justify-content: center;
@@ -556,9 +544,8 @@ textarea {
   transition: box-shadow 0.3s, border 0.3s; }
 
 .page-links {
-  display: block;
   position: relative;
   padding: 10px;
-  bottom: 80px; }
+  bottom: 57px; }
 
 /*# sourceMappingURL=application.css.map */
