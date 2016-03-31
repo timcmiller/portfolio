@@ -412,7 +412,7 @@ th {
   height: 2px;
   bottom: 0;
   left: 0;
-  background-color: #000;
+  background-color: white;
   visibility: hidden;
   -webkit-transform: scaleX(0);
   transform: scaleX(0);
@@ -432,12 +432,15 @@ th {
   border: solid 1px #707070;
   box-shadow: 0 0 5px 1px #969696; }
 
+.container {
+  display: flex;
+  justify-content: space-around; }
+
 .main-header {
   display: flex;
   justify-content: center;
   position: fixed;
   width: 100%;
-  background: white;
   border-bottom: 1px solid black;
   top: 0px; }
 
@@ -447,6 +450,9 @@ th {
   .site-nav li {
     padding: 10px; }
 
+.body section {
+  margin: 0px 10px 0px 10px; }
+
 .intro {
   text-align: left;
   width: 35%; }
@@ -454,11 +460,6 @@ th {
 .profile-img {
   width: 300px;
   height: 300px; }
-
-.container {
-  display: flex;
-  justify-content: space-around;
-  margin: 20px 0px 10px 0px; }
 
 .column {
   flex-direction: column; }
@@ -506,6 +507,21 @@ th {
   width: 70%;
   height: 90%; }
 
+.main-header {
+  background: #343434; }
+  .main-header a {
+    color: white; }
+
+.main-footer {
+  background: #343434; }
+  .main-footer span {
+    color: white; }
+  .main-footer a {
+    color: white; }
+
+h2 {
+  margin-left: 10px; }
+
 ul {
   list-style-type: none; }
 
@@ -513,16 +529,17 @@ textarea {
   resize: none;
   height: 100px; }
 
-.body section {
-  padding: 20px;
-  margin: 10px 40px 10px 40px;
-  border: 1px solid grey; }
-
-.body section:first-of-type {
-  margin-top: 91px; }
-
-.body section:last-of-type {
-  margin-bottom: 40px; }
+.body {
+  margin: 120px 0px 50px 0px; }
+  .body section {
+    border: solid grey 1px;
+    margin: 10px 10px 50px 10px; }
+  .body section:nth-of-type(3n+0) {
+    background: white; }
+  .body section:nth-of-type(3n+1) {
+    background: white; }
+  .body section:nth-of-type(3n+2) {
+    background: white; }
 
 .icons {
   padding: 5px;
@@ -546,7 +563,6 @@ textarea {
 
 .page-links {
   position: relative;
-  padding: 10px;
-  bottom: 57px; }
+  bottom: 110px; }
 
 /*# sourceMappingURL=application.css.map */
