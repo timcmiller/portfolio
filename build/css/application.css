@@ -432,6 +432,18 @@ th {
   border: solid 1px #707070;
   box-shadow: 0 0 5px 1px #969696; }
 
+.page-links[name="about"]:target ~ .body section {
+  -webkit-transform: translateY(0px);
+  transform: translateY(0px); }
+
+.page-links[name="projects"]:target ~ .body section {
+  -webkit-transform: translateY(-500px);
+  transform: translateY(-500px); }
+
+.page-links[name="contact"]:target ~ .body section {
+  -webkit-transform: translateY(-1000px);
+  transform: translateY(-1000px); }
+
 .main-header {
   display: flex;
   justify-content: center;
@@ -514,8 +526,14 @@ textarea {
 
 .body section {
   padding: 20px;
-  margin: 100px;
+  margin: 10px 40px 10px 40px;
   border: 1px solid grey; }
+
+.body section:first-of-type {
+  margin-top: 91px; }
+
+.body section:last-of-type {
+  margin-bottom: 40px; }
 
 .icons {
   padding: 5px;
@@ -539,6 +557,8 @@ textarea {
 
 .page-links {
   display: block;
-  padding: 10px; }
+  position: relative;
+  padding: 10px;
+  bottom: 80px; }
 
 /*# sourceMappingURL=application.css.map */

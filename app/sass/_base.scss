@@ -10,8 +10,14 @@ textarea {
 .body {
   section {
     padding: 20px;
-    margin: 100px;
+    margin: 10px 40px 10px 40px;
     border: 1px solid grey;
+  }
+  section:first-of-type {
+    margin-top: 91px;
+  }
+  section:last-of-type {
+    margin-bottom: 40px;
   }
 }
 
@@ -40,5 +46,7 @@ textarea {
 
 .page-links {
   display: block;
+  position: relative;
   padding: 10px;
+  bottom: 80px;
 }
