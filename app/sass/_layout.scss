@@ -62,14 +62,16 @@
 .body {
   margin: 120px 0px 50px 0px;
   section:nth-of-type(1n+2) {
-    border: solid grey 1px;
+    border-top: solid grey 1px;
+    border-bottom: solid grey 1px;
     margin: 10px 10px 50px 10px;
   }
 }
 
 .intro {
   text-align: left;
-  width: 35%
+  width: 35%;
+  margin-top: 0px;
 }
 
 .profile-img {
@@ -83,6 +85,10 @@
 
 .row {
   flex-direction: row;
+}
+
+.projects {
+  margin: 40px 0px;
 }
 
 .project-container {
@@ -99,6 +105,7 @@
 .contact-form {
   display: flex;
   flex-direction: column;
+  padding: 41px;
 }
 
 .input-box {
@@ -115,9 +122,13 @@
   color: white;
 }
 
-.techContainer {
+.tech-container {
   display: flex;
   flex-wrap: wrap;
+}
+
+.link-container {
+  margin: 10px;
 }
 
 

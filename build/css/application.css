@@ -480,12 +480,14 @@ th {
 .body {
   margin: 120px 0px 50px 0px; }
   .body section:nth-of-type(1n+2) {
-    border: solid grey 1px;
+    border-top: solid grey 1px;
+    border-bottom: solid grey 1px;
     margin: 10px 10px 50px 10px; }
 
 .intro {
   text-align: left;
-  width: 35%; }
+  width: 35%;
+  padding-top: 0px; }
 
 .profile-img {
   width: 300px;
@@ -496,6 +498,9 @@ th {
 
 .row {
   flex-direction: row; }
+
+.projects {
+  margin: 40px 0px; }
 
 .project-container {
   display: flex;
@@ -508,7 +513,8 @@ th {
 
 .contact-form {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  padding: 41px; }
 
 .input-box {
   display: flex;
@@ -522,9 +528,12 @@ th {
   border-radius: 5px;
   color: white; }
 
-.techContainer {
+.tech-container {
   display: flex;
   flex-wrap: wrap; }
+
+.link-container {
+  margin: 10px; }
 
 .main-footer {
   display: flex;
@@ -562,7 +571,8 @@ textarea {
 .icons {
   padding: 5px;
   font-size: 20px;
-  transition: font 0.3s ease; }
+  transition: font 0.3s ease;
+  color: #343434; }
 
 .icon-link {
   text-decoration: none; }

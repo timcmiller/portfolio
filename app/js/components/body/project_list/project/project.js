@@ -26,17 +26,19 @@ export default React.createClass({
     }.bind(this))
 
     return (
-      <article className="container">
+      <article className="container projects">
         <img className="project-logo" style={{width: this.props.width, height: this.props.height}} src={"images/" + this.props.img} alt={this.props.title} />
         <div callName="container column">
           <h2 dangerouslySetInnerHTML={this.rawMarkup()}></h2>
           <p>
             {this.props.description}
           </p>
-          <div className="techContainer">
+          <div className="tech-container">
             {techNodes}
           </div>
-          {linkNodes}
+          <div className="link-container">
+            {linkNodes}
+          </div>
         </div>
       </article>
     );

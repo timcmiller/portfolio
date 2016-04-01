@@ -21421,7 +21421,7 @@
 
 	    return _react2.default.createElement(
 	      'article',
-	      { className: 'container' },
+	      { className: 'container projects' },
 	      _react2.default.createElement('img', { className: 'project-logo', style: { width: this.props.width, height: this.props.height }, src: "images/" + this.props.img, alt: this.props.title }),
 	      _react2.default.createElement(
 	        'div',
@@ -21434,10 +21434,14 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'techContainer' },
+	          { className: 'tech-container' },
 	          techNodes
 	        ),
-	        linkNodes
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'link-container' },
+	          linkNodes
+	        )
 	      )
 	    );
 	  }
