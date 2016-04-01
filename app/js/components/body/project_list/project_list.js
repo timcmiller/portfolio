@@ -7,19 +7,18 @@ export default React.createClass({
   render() {
     var projectNodes = projectArray.map(function(project) {
       return (
-        <Project key={project._id} {...project}>
-          {project.title}
-        </Project>
+        <div className="slide" key={project._id}>
+          <Project {...project}>
+            {project.title}
+          </Project>
+        </div>
       );
     });
 
     return (
-      <section className="project-container column">
-        <h2>
-          Projects
-        </h2>
+      <div className="section">
         {projectNodes}
-      </section>
+      </div>
     );
   }
 })

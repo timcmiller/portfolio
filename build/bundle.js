@@ -21168,11 +21168,11 @@
 
 	var _body2 = _interopRequireDefault(_body);
 
-	var _header = __webpack_require__(191);
+	var _header = __webpack_require__(192);
 
 	var _header2 = _interopRequireDefault(_header);
 
-	var _footer = __webpack_require__(193);
+	var _footer = __webpack_require__(191);
 
 	var _footer2 = _interopRequireDefault(_footer);
 
@@ -21185,8 +21185,7 @@
 	      'section',
 	      null,
 	      _react2.default.createElement(_header2.default, this.props),
-	      _react2.default.createElement(_body2.default, this.props),
-	      _react2.default.createElement(_footer2.default, null)
+	      _react2.default.createElement(_body2.default, this.props)
 	    );
 	  }
 	});
@@ -21221,6 +21220,10 @@
 
 	var _landing2 = _interopRequireDefault(_landing);
 
+	var _footer = __webpack_require__(191);
+
+	var _footer2 = _interopRequireDefault(_footer);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = _react2.default.createClass({
@@ -21228,14 +21231,24 @@
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'section',
-	      { className: 'body' },
-	      _react2.default.createElement(_landing2.default, null),
-	      _react2.default.createElement('a', { className: 'page-links', id: 'about' }),
-	      _react2.default.createElement(_home2.default, this.props),
-	      _react2.default.createElement('a', { className: 'page-links', id: 'projects' }),
+	      { id: 'fullpage', className: 'body' },
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'section' },
+	        _react2.default.createElement(_landing2.default, null)
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'section' },
+	        _react2.default.createElement(_home2.default, this.props)
+	      ),
 	      _react2.default.createElement(_project_list2.default, this.props),
-	      _react2.default.createElement('a', { className: 'page-links', id: 'contact' }),
-	      _react2.default.createElement(_contact2.default, this.props)
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'section' },
+	        _react2.default.createElement(_contact2.default, this.props),
+	        _react2.default.createElement(_footer2.default, null)
+	      )
 	    );
 	  }
 	});
@@ -21291,8 +21304,6 @@
 	  value: true
 	});
 
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -21312,20 +21323,19 @@
 	  render: function render() {
 	    var projectNodes = _projects2.default.map(function (project) {
 	      return _react2.default.createElement(
-	        _project2.default,
-	        _extends({ key: project._id }, project),
-	        project.title
+	        'div',
+	        { className: 'slide', key: project._id },
+	        _react2.default.createElement(
+	          _project2.default,
+	          project,
+	          project.title
+	        )
 	      );
 	    });
 
 	    return _react2.default.createElement(
-	      'section',
-	      { className: 'project-container column' },
-	      _react2.default.createElement(
-	        'h2',
-	        null,
-	        'Projects'
-	      ),
+	      'div',
+	      { className: 'section' },
 	      projectNodes
 	    );
 	  }
@@ -21420,27 +21430,31 @@
 	    }.bind(this));
 
 	    return _react2.default.createElement(
-	      'article',
-	      { className: 'container projects' },
-	      _react2.default.createElement('img', { className: 'project-logo', style: { width: this.props.width, height: this.props.height }, src: "images/" + this.props.img, alt: this.props.title }),
+	      'section',
+	      { className: 'project-container column' },
 	      _react2.default.createElement(
-	        'div',
-	        { callName: 'container column' },
-	        _react2.default.createElement('h2', { dangerouslySetInnerHTML: this.rawMarkup() }),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          this.props.description
-	        ),
+	        'article',
+	        { className: 'container projects' },
+	        _react2.default.createElement('img', { className: 'project-logo', style: { width: this.props.width, height: this.props.height }, src: "images/" + this.props.img, alt: this.props.title }),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'tech-container' },
-	          techNodes
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'link-container' },
-	          linkNodes
+	          { callName: 'container column' },
+	          _react2.default.createElement('h2', { dangerouslySetInnerHTML: this.rawMarkup() }),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            this.props.description
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'tech-container' },
+	            techNodes
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'link-container' },
+	            linkNodes
+	          )
 	        )
 	      )
 	    );
@@ -22901,91 +22915,6 @@
 /* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _resume = __webpack_require__(192);
-
-	var _resume2 = _interopRequireDefault(_resume);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = _react2.default.createClass({
-	  displayName: 'header',
-	  render: function render() {
-
-	    return _react2.default.createElement(
-	      'header',
-	      { className: 'main-header' },
-	      _react2.default.createElement(
-	        'ul',
-	        { className: 'site-nav' },
-	        _react2.default.createElement(
-	          'li',
-	          null,
-	          _react2.default.createElement(
-	            'a',
-	            { className: 'nav-link smoothScroll', href: '#about' },
-	            'About'
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'li',
-	          null,
-	          _react2.default.createElement(
-	            'a',
-	            { className: 'nav-link smoothScroll', href: '#projects' },
-	            'Projects'
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'li',
-	          null,
-	          _react2.default.createElement(
-	            'a',
-	            { className: 'nav-link smoothScroll', href: '#contact' },
-	            'Contact'
-	          )
-	        )
-	      )
-	    );
-	  }
-	});
-
-/***/ },
-/* 192 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var myBigGreenDialog = {
-	  display: 'flex',
-	  justifyContent: 'center',
-	  alignItems: 'center',
-	  backgroundColor: '#00897B',
-	  color: '#ffffff',
-	  width: '70%',
-	  height: '600px',
-	  marginTop: '-300px',
-	  marginLeft: '-35%'
-	};
-
-	exports.default = myBigGreenDialog;
-
-/***/ },
-/* 193 */
-/***/ function(module, exports, __webpack_require__) {
-
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
@@ -23062,6 +22991,91 @@
 	    );
 	  }
 	});
+
+/***/ },
+/* 192 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _resume = __webpack_require__(193);
+
+	var _resume2 = _interopRequireDefault(_resume);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _react2.default.createClass({
+	  displayName: 'header',
+	  render: function render() {
+
+	    return _react2.default.createElement(
+	      'header',
+	      { className: 'main-header' },
+	      _react2.default.createElement(
+	        'ul',
+	        { className: 'site-nav' },
+	        _react2.default.createElement(
+	          'li',
+	          null,
+	          _react2.default.createElement(
+	            'a',
+	            { className: 'nav-link smoothScroll', href: '#about' },
+	            'About'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'li',
+	          null,
+	          _react2.default.createElement(
+	            'a',
+	            { className: 'nav-link smoothScroll', href: '#projects' },
+	            'Projects'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'li',
+	          null,
+	          _react2.default.createElement(
+	            'a',
+	            { className: 'nav-link smoothScroll', href: '#contact' },
+	            'Contact'
+	          )
+	        )
+	      )
+	    );
+	  }
+	});
+
+/***/ },
+/* 193 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var myBigGreenDialog = {
+	  display: 'flex',
+	  justifyContent: 'center',
+	  alignItems: 'center',
+	  backgroundColor: '#00897B',
+	  color: '#ffffff',
+	  width: '70%',
+	  height: '600px',
+	  marginTop: '-300px',
+	  marginLeft: '-35%'
+	};
+
+	exports.default = myBigGreenDialog;
 
 /***/ }
 /******/ ]);
