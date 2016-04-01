@@ -4,10 +4,19 @@
   <meta charset="UTF-8">
   <title>Tim C Miller</title>
   <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" type="text/css" href="jquery.fullPage.css" />
 </head>
 <body>
   <div id="content"></div>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="zenscroll-min.js"></script>
   <script type="text/javascript" src="bundle.js"></script>
+  <script type="text/javascript" src="jquery.fullPage.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#fullpage').fullpage(
+        {fixedElements: '.main-header, #footer'});
+    });
+  </script>
 </body>
 </html>
