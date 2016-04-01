@@ -9,13 +9,14 @@
 <body>
   <div id="content"></div>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="zenscroll-min.js"></script>
   <script type="text/javascript" src="bundle.js"></script>
   <script type="text/javascript" src="jquery.fullPage.js"></script>
   <script type="text/javascript">
     $(document).ready(function() {
-      $('#fullpage').fullpage(
-        {fixedElements: '.main-header, #footer'});
+      $('#fullpage').fullpage({
+        anchors: ['landing', 'about', 'projects', 'contact'],
+        fixedElements: '.main-header'
+      });
     });
   </script>
 </body>

@@ -4,7 +4,7 @@ export default React.createClass({
 
   render() {
     return (
-      <footer id="footer" className="main-footer container row">
+      <footer className="main-footer container row">
         <span>
           Tim C Miller
         </span>

@@ -27,9 +27,6 @@ export default React.createClass({
 
     return (
       <section className="project-container column">
-        <h2>
-          Projects
-        </h2>
         <article className="container projects">
           <img className="project-logo" style={{width: this.props.width, height: this.props.height}} src={"images/" + this.props.img} alt={this.props.title} />
           <div callName="container column">

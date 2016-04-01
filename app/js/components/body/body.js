@@ -6,13 +6,6 @@ import Contact from './contact/contact';
 import Landing from './landing/landing';
 import PortfolioFooter from './../footer/footer';
 
-
-          // <div className="slide">Slide 1</div>
-          // <div className="slide">Slide 2</div>
-          // <div className="slide">Slide 3</div>
-          // <div className="slide">Slide 4</div>
-          // <div className="slide">Slide 5</div>
-
 export default React.createClass({
 
   render() {
@@ -24,7 +17,7 @@ export default React.createClass({
         <div className="section">
           <Home {...this.props} />
         </div>
-        <ProjectList {...this.props} />
+          <ProjectList {...this.props} />
         <div className="section">
           <Contact {...this.props} />
           <PortfolioFooter />

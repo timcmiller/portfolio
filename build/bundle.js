@@ -21226,12 +21226,6 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// <div className="slide">Slide 1</div>
-	// <div className="slide">Slide 2</div>
-	// <div className="slide">Slide 3</div>
-	// <div className="slide">Slide 4</div>
-	// <div className="slide">Slide 5</div>
-
 	exports.default = _react2.default.createClass({
 	  displayName: 'body',
 	  render: function render() {
@@ -21438,11 +21432,6 @@
 	    return _react2.default.createElement(
 	      'section',
 	      { className: 'project-container column' },
-	      _react2.default.createElement(
-	        'h2',
-	        null,
-	        'Projects'
-	      ),
 	      _react2.default.createElement(
 	        'article',
 	        { className: 'container projects' },
@@ -22943,7 +22932,7 @@
 	  render: function render() {
 	    return _react2.default.createElement(
 	      "footer",
-	      { id: "footer", className: "main-footer container row" },
+	      { className: "main-footer container row" },
 	      _react2.default.createElement(
 	        "span",
 	        null,

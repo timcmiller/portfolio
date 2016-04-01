@@ -28,8 +28,6 @@
 .landing-container {
   display: flex;
   justify-content: center;
-  border: none;
-  margin: 25% 0px 40%;
 }
 
 .title-container {
@@ -59,15 +57,6 @@
 
 //about
 
-.body {
-  margin: 120px 0px 50px 0px;
-  section:nth-of-type(1n+2) {
-    border-top: solid grey 1px;
-    border-bottom: solid grey 1px;
-    margin: 10px 10px 50px 10px;
-  }
-}
-
 .intro {
   text-align: left;
   width: 35%;
@@ -94,6 +83,7 @@
 .project-container {
   display: flex;
   align-items: flex-start;
+  margin: 0px 50px;
 }
 
 .project-logo {
@@ -137,6 +127,9 @@
   display: flex;
   justify-content: center;
   border-top: 1px solid black;
+  position: absolute;
+  width: 100%;
+  bottom: -1%;
   * {
     padding: 20px 3px 20px 3px;
   }

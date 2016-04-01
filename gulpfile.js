@@ -27,11 +27,6 @@ gulp.task('fonts:dev', function() {
   .pipe(gulp.dest('build/css/fonts'));
 });
 
-gulp.task('zenscroll:dev', function() {
-  return gulp.src('./app/js/lib/zenscroll/zenscroll-min.js')
-  .pipe(gulp.dest('build'));
-});
-
 gulp.task('fullpagejs:dev', function() {
   return gulp.src('./app/js/lib/fullPage/jquery.fullPage.js')
   .pipe(gulp.dest('build'));
@@ -64,6 +59,6 @@ gulp.task('webpack:dev', function() {
   .pipe(gulp.dest('build/'));
 });
 
-gulp.task('build', ['static:dev', 'webpack:dev', 'zenscroll:dev', 'fullpagejs:dev', 'fullpagecss:dev']);
+gulp.task('build', ['static:dev', 'webpack:dev', 'fullpagejs:dev', 'fullpagecss:dev']);
 gulp.task('styles', ['sass:dev', 'images:dev', 'fonts:dev']);
 gulp.task('default', ['build', 'styles']);
