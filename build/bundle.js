@@ -23021,31 +23021,31 @@
 	      { className: 'main-header' },
 	      _react2.default.createElement(
 	        'ul',
-	        { className: 'site-nav' },
+	        { id: 'navMenu', className: 'site-nav' },
 	        _react2.default.createElement(
 	          'li',
-	          null,
+	          { 'data-menuanchor': 'about-me' },
 	          _react2.default.createElement(
 	            'a',
-	            { className: 'nav-link smoothScroll', href: '#about' },
+	            { className: 'nav-link', href: '#about-me' },
 	            'About'
 	          )
 	        ),
 	        _react2.default.createElement(
 	          'li',
-	          null,
+	          { 'data-menuanchor': 'projects' },
 	          _react2.default.createElement(
 	            'a',
-	            { className: 'nav-link smoothScroll', href: '#projects' },
+	            { className: 'nav-link', href: '#projects' },
 	            'Projects'
 	          )
 	        ),
 	        _react2.default.createElement(
 	          'li',
-	          null,
+	          { 'data-menuanchor': 'contact' },
 	          _react2.default.createElement(
 	            'a',
-	            { className: 'nav-link smoothScroll', href: '#contact' },
+	            { className: 'nav-link', href: '#contact' },
 	            'Contact'
 	          )
 	        )

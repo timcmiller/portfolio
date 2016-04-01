@@ -7,15 +7,15 @@ export default React.createClass({
 
     return (
       <header className="main-header">
-          <ul className="site-nav">
-            <li>
-              <a className="nav-link smoothScroll" href="#about">About</a>
+          <ul id="navMenu" className="site-nav">
+            <li data-menuanchor="about-me">
+              <a className="nav-link" href="#about-me">About</a>
             </li>
-            <li>
-              <a className="nav-link smoothScroll" href="#projects">Projects</a>
+            <li data-menuanchor="projects">
+              <a className="nav-link" href="#projects">Projects</a>
             </li>
-            <li>
-              <a className="nav-link smoothScroll" href="#contact">Contact</a>
+            <li data-menuanchor="contact">
+              <a className="nav-link" href="#contact">Contact</a>
             </li>
           </ul>
       </header>
