@@ -26,19 +26,23 @@ export default React.createClass({
     }.bind(this))
 
     return (
-      <article className="container">
-        <img className="project-logo" style={{width: this.props.width, height: this.props.height}} src={"images/" + this.props.img} alt={this.props.title} />
-        <div callName="container column">
-          <h2 dangerouslySetInnerHTML={this.rawMarkup()}></h2>
-          <p>
-            {this.props.description}
-          </p>
-          <div className="techContainer">
-            {techNodes}
+      <section className="project-container column">
+        <article className="container projects">
+          <img className="project-logo" style={{width: this.props.width, height: this.props.height}} src={"images/" + this.props.img} alt={this.props.title} />
+          <div callName="container column">
+            <h2 dangerouslySetInnerHTML={this.rawMarkup()}></h2>
+            <p>
+              {this.props.description}
+            </p>
+            <div className="tech-container">
+              {techNodes}
+            </div>
+            <div className="link-container">
+              {linkNodes}
+            </div>
           </div>
-          {linkNodes}
-        </div>
-      </article>
+        </article>
+      </section>
     );
   }
 })

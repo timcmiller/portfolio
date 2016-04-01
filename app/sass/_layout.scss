@@ -1,38 +1,71 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+}
+
 //header
 .main-header {
   display: flex;
   justify-content: center;
   position: fixed;
   width: 100%;
-  background: white;
-  border-bottom: 1px solid black;
-  top: 0px;
+  top: -1%;
 }
 
 .site-nav {
   display: flex;
   padding: 0px;
+  margin: 0px;
 
   li {
-    padding: 10px;
+    padding: 20px 18px 13px;
   }
 }
 
 //body
 
+//landing
+.landing-container {
+  display: flex;
+  justify-content: center;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: solid $five 10px;
+  margin: 20px;
+}
+
+.title {
+  font-size: 50px;
+  margin-right: 20px;
+  color: $five;
+}
+
+.subtitle {
+  font-size: 30px;
+  margin: 10px;
+  color: $five;
+}
+
+.landing-list {
+  padding: 0px;
+  color: $five;
+}
+
+//about
+
 .intro {
   text-align: left;
-  width: 35%
+  width: 35%;
+  margin-top: 0px;
 }
 
 .profile-img {
   width: 300px;
   height: 300px;
-}
-
-.container {
-  display: flex;
-  justify-content: space-around;
 }
 
 .column {
@@ -43,9 +76,14 @@
   flex-direction: row;
 }
 
+.projects {
+  margin: 40px 0px;
+}
+
 .project-container {
   display: flex;
   align-items: flex-start;
+  margin: 0px 50px;
 }
 
 .project-logo {
@@ -57,6 +95,7 @@
 .contact-form {
   display: flex;
   flex-direction: column;
+  padding: 41px;
 }
 
 .input-box {
@@ -73,9 +112,13 @@
   color: white;
 }
 
-.techContainer {
+.tech-container {
   display: flex;
   flex-wrap: wrap;
+}
+
+.link-container {
+  margin: 10px;
 }
 
 
@@ -83,7 +126,9 @@
 .main-footer {
   display: flex;
   justify-content: center;
-  border-top: 1px solid black;
+  position: absolute;
+  width: 100%;
+  bottom: -1%;
   * {
     padding: 20px 3px 20px 3px;
   }

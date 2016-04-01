@@ -1,3 +1,25 @@
+//colors
+.main-header {
+  background: $five;
+  a {
+    color: white;
+  }
+}
+
+.main-footer {
+  background: $five;
+  span {
+    color: white;
+  }
+  a {
+    color: white;
+  }
+}
+
+h2 {
+  margin: 10px;
+}
+
 ul {
   list-style-type: none;
 }
@@ -7,17 +29,11 @@ textarea {
   height: 100px;
 }
 
-.body {
-  section {
-    padding: 20px;
-    margin: 100px;
-    border: 1px solid grey;
-  }
-}
-
 .icons {
   padding: 5px;
   font-size: 20px;
+  transition: font 0.3s ease;
+  color: $five;
 }
 
 .icon-link {
@@ -38,6 +54,6 @@ textarea {
 }
 
 .page-links {
-  display: block;
-  padding: 10px;
+  position: relative;
+  bottom: 110px;
 }
