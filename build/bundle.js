@@ -21168,11 +21168,11 @@
 
 	var _body2 = _interopRequireDefault(_body);
 
-	var _header = __webpack_require__(190);
+	var _header = __webpack_require__(191);
 
 	var _header2 = _interopRequireDefault(_header);
 
-	var _footer = __webpack_require__(192);
+	var _footer = __webpack_require__(193);
 
 	var _footer2 = _interopRequireDefault(_footer);
 
@@ -21217,6 +21217,10 @@
 
 	var _contact2 = _interopRequireDefault(_contact);
 
+	var _landing = __webpack_require__(190);
+
+	var _landing2 = _interopRequireDefault(_landing);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = _react2.default.createClass({
@@ -21225,6 +21229,7 @@
 	    return _react2.default.createElement(
 	      'section',
 	      { className: 'body' },
+	      _react2.default.createElement(_landing2.default, null),
 	      _react2.default.createElement('a', { className: 'page-links', id: 'about' }),
 	      _react2.default.createElement(_home2.default, this.props),
 	      _react2.default.createElement('a', { className: 'page-links', id: 'projects' }),
@@ -22808,6 +22813,90 @@
 /* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _react2.default.createClass({
+	  displayName: "landing",
+	  render: function render() {
+	    return _react2.default.createElement(
+	      "section",
+	      { className: "landing-container" },
+	      _react2.default.createElement(
+	        "div",
+	        { className: "title-container" },
+	        _react2.default.createElement(
+	          "h2",
+	          { className: "title" },
+	          "Tim C Miller"
+	        ),
+	        _react2.default.createElement(
+	          "h3",
+	          { className: "subtitle" },
+	          "Full-Stack Engineer"
+	        )
+	      ),
+	      _react2.default.createElement(
+	        "ul",
+	        { className: "landing-list" },
+	        _react2.default.createElement(
+	          "li",
+	          null,
+	          "JavaScript"
+	        ),
+	        _react2.default.createElement(
+	          "li",
+	          null,
+	          "HTML"
+	        ),
+	        _react2.default.createElement(
+	          "li",
+	          null,
+	          "CSS"
+	        ),
+	        _react2.default.createElement(
+	          "li",
+	          null,
+	          "Ruby"
+	        ),
+	        _react2.default.createElement(
+	          "li",
+	          null,
+	          "React"
+	        ),
+	        _react2.default.createElement(
+	          "li",
+	          null,
+	          "React Native"
+	        ),
+	        _react2.default.createElement(
+	          "li",
+	          null,
+	          "Angular"
+	        ),
+	        _react2.default.createElement(
+	          "li",
+	          null,
+	          "Ember"
+	        )
+	      )
+	    );
+	  }
+	});
+
+/***/ },
+/* 191 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
@@ -22818,7 +22907,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _resume = __webpack_require__(191);
+	var _resume = __webpack_require__(192);
 
 	var _resume2 = _interopRequireDefault(_resume);
 
@@ -22867,7 +22956,7 @@
 	});
 
 /***/ },
-/* 191 */
+/* 192 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22890,7 +22979,7 @@
 	exports.default = myBigGreenDialog;
 
 /***/ },
-/* 192 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";

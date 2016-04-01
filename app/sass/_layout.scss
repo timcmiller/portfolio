@@ -24,8 +24,47 @@
 
 //body
 
-.body section {
-  margin: 0px 10px 0px 10px;
+//landing
+.landing-container {
+  display: flex;
+  justify-content: center;
+  border: none;
+  margin: 250px 0px 300px;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: solid $five 10px;
+  margin: 20px;
+}
+
+.title {
+  font-size: 50px;
+  margin-right: 20px;
+  color: $five;
+}
+
+.subtitle {
+  font-size: 30px;
+  margin: 10px;
+  color: $five;
+}
+
+.landing-list {
+  padding: 0px;
+  color: $five;
+}
+
+//about
+
+.body {
+  margin: 120px 0px 50px 0px;
+  section:nth-of-type(1n+2) {
+    border: solid grey 1px;
+    margin: 10px 10px 50px 10px;
+  }
 }
 
 .intro {
