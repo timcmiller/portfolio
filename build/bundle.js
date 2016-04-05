@@ -22785,7 +22785,7 @@
 	        { className: "container" },
 	        _react2.default.createElement(
 	          "form",
-	          { className: "contact-form" },
+	          { id: "ajax-contact", method: "post", action: "mailer.php", className: "contact-form" },
 	          _react2.default.createElement(
 	            "div",
 	            { className: "container row style-1" },
@@ -22797,7 +22797,7 @@
 	                null,
 	                "*Name:"
 	              ),
-	              _react2.default.createElement("input", { className: "input", type: "text", placeholder: "Name" })
+	              _react2.default.createElement("input", { className: "input", id: "name", type: "text", name: "name", required: true })
 	            ),
 	            _react2.default.createElement(
 	              "label",
@@ -22807,18 +22807,18 @@
 	                null,
 	                "*Email:"
 	              ),
-	              _react2.default.createElement("input", { className: "input", type: "text", placeholder: "Email" })
+	              _react2.default.createElement("input", { className: "input", type: "email", id: "email", name: "email", required: true })
 	            )
 	          ),
 	          _react2.default.createElement(
 	            "label",
 	            { className: "input-box" },
 	            "Message:",
-	            _react2.default.createElement("textarea", { className: "input" })
+	            _react2.default.createElement("textarea", { className: "input", id: "message", name: "message", required: true })
 	          ),
 	          _react2.default.createElement(
 	            "button",
-	            { className: "btn confirm", type: "button" },
+	            { className: "btn confirm", type: "submit" },
 	            "Send"
 	          )
 	        )

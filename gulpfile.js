@@ -37,6 +37,16 @@ gulp.task('fullpagecss:dev', function() {
   .pipe(gulp.dest('build'));
 });
 
+gulp.task('mailerjs:dev', function() {
+  return gulp.src('./app/js/lib/mailer/app.js')
+  .pipe(gulp.dest('build'));
+});
+
+gulp.task('mailerphp:dev', function() {
+  return gulp.src('./app/js/lib/mailer/mailer.php')
+  .pipe(gulp.dest('build'));
+});
+
 gulp.task('webpack:dev', function() {
   return gulp.src('app/js/entry.jsx')
   .pipe(webpack({
@@ -59,6 +69,8 @@ gulp.task('webpack:dev', function() {
   .pipe(gulp.dest('build/'));
 });
 
-gulp.task('build', ['static:dev', 'webpack:dev', 'fullpagejs:dev', 'fullpagecss:dev']);
+gulp.task('build', ['static:dev', 'webpack:dev', 'fullpage', 'mailer']);
+gulp.task('fullpage', ['fullpagejs:dev', 'fullpagecss:dev']);
+gulp.task('mailer', ['mailerjs:dev', 'mailerphp:dev']);
 gulp.task('styles', ['sass:dev', 'images:dev', 'fonts:dev']);
 gulp.task('default', ['build', 'styles']);
