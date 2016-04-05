@@ -4,17 +4,18 @@
   <meta charset="UTF-8">
   <title>Tim C Miller</title>
   <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" type="text/css" href="jquery.fullPage.css" />
+  <link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
 </head>
 <body>
   <div id="content"></div>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
   <script type="text/javascript" src="bundle.js"></script>
   <script type="text/javascript" src="jquery.fullPage.js"></script>
   <script type="text/javascript">
     $(document).ready(function() {
       $('#fullpage').fullpage({
-        anchors: ['landing', 'about', 'projects', 'contact'],
+        anchors: ['', 'about-me', 'projects', 'contact'],
+        menu: '#navMenu',
         fixedElements: '.main-header'
       });
     });

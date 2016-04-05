@@ -5,7 +5,7 @@ var sass = require('gulp-sass');
 var maps = require('gulp-sourcemaps');
 
 gulp.task('static:dev', function() {
-  return gulp.src('app/**/*.html')
+  return gulp.src('app/index.html')
   .pipe(gulp.dest('build/'));
 });
 
@@ -34,7 +34,7 @@ gulp.task('fullpagejs:dev', function() {
 
 gulp.task('fullpagecss:dev', function() {
   return gulp.src('./app/js/lib/fullPage/jquery.fullPage.css')
-  .pipe(gulp.dest('build'));
+  .pipe(gulp.dest('build/css'));
 });
 
 gulp.task('webpack:dev', function() {
@@ -59,6 +59,7 @@ gulp.task('webpack:dev', function() {
   .pipe(gulp.dest('build/'));
 });
 
-gulp.task('build', ['static:dev', 'webpack:dev', 'fullpagejs:dev', 'fullpagecss:dev']);
+gulp.task('build', ['static:dev', 'webpack:dev', 'fullpage']);
+gulp.task('fullpage', ['fullpagejs:dev', 'fullpagecss:dev']);
 gulp.task('styles', ['sass:dev', 'images:dev', 'fonts:dev']);
 gulp.task('default', ['build', 'styles']);

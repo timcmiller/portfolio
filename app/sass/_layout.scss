@@ -9,16 +9,16 @@
   justify-content: center;
   position: fixed;
   width: 100%;
-  border-bottom: 1px solid black;
-  top: 0px;
+  top: -1%;
 }
 
 .site-nav {
   display: flex;
   padding: 0px;
+  margin: 0px;
 
   li {
-    padding: 10px;
+    padding: 20px 18px 13px;
   }
 }
 
@@ -126,7 +126,6 @@
 .main-footer {
   display: flex;
   justify-content: center;
-  border-top: 1px solid black;
   position: absolute;
   width: 100%;
   bottom: -1%;

@@ -22757,7 +22757,7 @@
 /* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -22770,56 +22770,69 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = _react2.default.createClass({
-	  displayName: "contact",
+	  displayName: 'contact',
+	  handleSubmit: function handleSubmit(e) {
+	    console.log('submitted');
+	    e.preventDefault();
+
+	    $.ajax({
+	      type: 'POST',
+	      url: '/contact/',
+	      data: $('#contact-form').serialize(),
+	      success: function success(res) {
+	        console.log('e-mail sent');
+	      }
+	    });
+	  },
 	  render: function render() {
 	    return _react2.default.createElement(
-	      "section",
+	      'section',
 	      null,
 	      _react2.default.createElement(
-	        "h2",
+	        'h2',
 	        null,
-	        "Contact"
+	        'Contact'
 	      ),
 	      _react2.default.createElement(
-	        "div",
-	        { className: "container" },
+	        'div',
+	        { className: 'container' },
 	        _react2.default.createElement(
-	          "form",
-	          { className: "contact-form" },
+	          'form',
+	          { id: 'contact-form', className: 'contact-form' },
 	          _react2.default.createElement(
-	            "div",
-	            { className: "container row style-1" },
+	            'div',
+	            { className: 'container row style-1' },
 	            _react2.default.createElement(
-	              "label",
-	              { className: "input-box" },
+	              'label',
+	              { className: 'input-box', forHTML: 'contact-form-name' },
 	              _react2.default.createElement(
-	                "span",
+	                'span',
 	                null,
-	                "*Name:"
+	                '*Name:'
 	              ),
-	              _react2.default.createElement("input", { className: "input", type: "text", placeholder: "Name" })
+	              _react2.default.createElement('input', { className: 'input', id: 'contact-form-name', type: 'text', name: 'name', required: true })
 	            ),
 	            _react2.default.createElement(
-	              "label",
-	              { className: "input-box" },
+	              'label',
+	              { className: 'input-box', forHTML: 'contact-form-mail' },
 	              _react2.default.createElement(
-	                "span",
+	                'span',
 	                null,
-	                "*Email:"
+	                '*Email:'
 	              ),
-	              _react2.default.createElement("input", { className: "input", type: "text", placeholder: "Email" })
+	              _react2.default.createElement('input', { className: 'input', type: 'email', id: 'contact-form-mail', name: 'email', required: true })
 	            )
 	          ),
 	          _react2.default.createElement(
-	            "label",
-	            { className: "input-box" },
-	            "Message:",
-	            _react2.default.createElement("textarea", { className: "input" })
+	            'label',
+	            { className: 'input-box', forHTML: 'contact-form-message' },
+	            'Message:',
+	            _react2.default.createElement('textarea', { className: 'input', id: 'contact-form-message', name: 'message', required: true })
 	          ),
 	          _react2.default.createElement(
-	            "button",
-	            { className: "btn confirm", type: "button" },
-	            "Send"
+	            'button',
+	            { className: 'btn confirm', type: 'submit', onClick: this.handleSubmit },
+	            'Send'
 	          )
 	        )
 	      )
@@ -23021,31 +23034,31 @@
 	      { className: 'main-header' },
 	      _react2.default.createElement(
 	        'ul',
-	        { className: 'site-nav' },
+	        { id: 'navMenu', className: 'site-nav' },
 	        _react2.default.createElement(
 	          'li',
-	          null,
+	          { 'data-menuanchor': 'about-me' },
 	          _react2.default.createElement(
 	            'a',
-	            { className: 'nav-link smoothScroll', href: '#about' },
+	            { className: 'nav-link', href: '#about-me' },
 	            'About'
 	          )
 	        ),
 	        _react2.default.createElement(
 	          'li',
-	          null,
+	          { 'data-menuanchor': 'projects' },
 	          _react2.default.createElement(
 	            'a',
-	            { className: 'nav-link smoothScroll', href: '#projects' },
+	            { className: 'nav-link', href: '#projects' },
 	            'Projects'
 	          )
 	        ),
 	        _react2.default.createElement(
 	          'li',
-	          null,
+	          { 'data-menuanchor': 'contact' },
 	          _react2.default.createElement(
 	            'a',
-	            { className: 'nav-link smoothScroll', href: '#contact' },
+	            { className: 'nav-link', href: '#contact' },
 	            'Contact'
 	          )
 	        )

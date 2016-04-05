@@ -36,22 +36,9 @@
   box-shadow: 0 0 5px 1px #969696;
 }
 
-//Scrolling
-
-// .page-links[ name="about" ]:target ~ .body section {
-//   -webkit-transform: translateY( 0px);
-//   transform: translateY( 0px );
-// }
-
-// .page-links[ name="projects" ]:target ~ .body section {
-//   -webkit-transform: translateY( -500px);
-//   transform: translateY( -500px );
-// }
-
-// .page-links[ name="contact" ]:target ~ .body section {
-//   -webkit-transform: translateY( -1000px);
-//   transform: translateY( -1000px );
-// }
+li.active {
+  background-color: grey;
+}
 
 
 
