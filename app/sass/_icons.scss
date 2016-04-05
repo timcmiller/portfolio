@@ -1,5 +1,11 @@
 @import 'icons/index';
 
+.icon-keyboard_arrow_left:before {
+    content: "\e314";
+}
+.icon-keyboard_arrow_right:before {
+    content: "\e315";
+}
 .icon-sphere:before {
     content: "\e904";
 }
