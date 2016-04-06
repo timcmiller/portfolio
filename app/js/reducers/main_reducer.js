@@ -4,13 +4,32 @@ const initialState = {
   name: '',
   email: '',
   message: '',
-  sucess: false,
-  incorrect: false
+  success: false,
+  failure: false,
+  nameInvalid: false,
+  emailInvalid: false,
+  messageInvalid: false
 };
 
 export default function(state = initialState, action) {
 
   switch(action.type) {
+
+    case 'EMAIL_SUCCESS':
+      return {
+        ...state,
+        name: "",
+        email: "",
+        message: "",
+        success: true,
+        failure: false
+      };
+
+    case 'EMAIL_FAILURE':
+      return {
+        ...state,
+        failure: true
+      };
 
     case 'NAME_CHANGE':
       return {

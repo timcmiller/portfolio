@@ -5,15 +5,10 @@ export default React.createClass({
   handleSubmit(e) {
     console.log('submitted');
     e.preventDefault();
-    this.
-    $.ajax({
-      type: 'POST',
-      url: '/contact/',
-      data: $('#contact-form').serialize(),
-      success: function(res) {
-        console.log('e-mail sent');
-      }
-    });
+    this.props.validateForm(this.props.name, this.props.email, this.props.message);
+    $('#contact-form-name').val("");
+    $('#contact-form-mail').val("");
+    $('#contact-form-message').val("");
   },
 
   handleNameChange(e) {
@@ -45,8 +40,7 @@ export default React.createClass({
                   id="contact-form-name"
                   type="text"
                   name="name"
-                  onChange={this.handleNameChange}
-                  required/>
+                  onChange={this.handleNameChange}/>
 
               </label>
               <label className="input-box" forHTML="contact-form-mail">
@@ -57,8 +51,7 @@ export default React.createClass({
                 type="email"
                 id="contact-form-mail"
                 name="email"
-                onChange={this.handleEmailChange}
-                required/>
+                onChange={this.handleEmailChange}/>
 
               </label>
             </div>
@@ -69,12 +62,12 @@ export default React.createClass({
                 className="input"
                 id="contact-form-message"
                 name="message"
-                onChange={this.handleMessageChange}
-                required>
+                onChange={this.handleMessageChange}>
               </textarea>
 
             </label>
             <button className="btn confirm" type="submit" onClick={this.handleSubmit}>Send</button>
+            {this.props.success ? <span>Message Sent!</span> : null}
           </form>
         </div>
       </section>

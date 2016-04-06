@@ -1,26 +1,53 @@
 import * as types from '../constants/action_types';
 
-// export function sendEmail(formData) {
-//   return function(dispatch){
-//     dispatch(successEmail())
+export function validateForm(name, email, message) {
 
-//     let request = new Request('contact/', {
-//       method: 'POST',
-//       headers: new Headers({
-//         'Accept': 'application/json',
-//         'Content-Type': 'application/json'
-//       }),
-//       credentials: 'same-origin',
-//       body: JSON.stringify({
-//         name: formData.name,
-//         email: formData.email,
-//         message: formData.message
-//       })
-//     });
+}
 
-//     return fetch()
-//   }
-// }
+export function sendEmail(name, email, message) {
+
+  let request = new Request('contact/', {
+    method: 'POST',
+    headers: new Headers({
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }),
+    credentials: 'same-origin',
+    body: JSON.stringify({
+      name,
+      email,
+      message
+    })
+  });
+
+  return function(dispatch){
+    return fetch(request)
+      .then(function(res) {
+      if (!(res.status >= 200 && res.status < 300)) {
+        throw error;
+      }
+    })
+    .then(function() {
+      dispatch(emailSuccess());
+    })
+    .catch(function(error) {
+      console.log('catching error ' + error);
+      dispatch(emailFailure());
+    });
+  }
+}
+
+export function emailSuccess() {
+  return {
+    type: types.EMAIL_SUCCESS
+  };
+}
+
+export function emailFailure() {
+  return {
+    type: types.EMAIL_FAILURE
+  };
+}
 
 export function changeName(name) {
   return {

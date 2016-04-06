@@ -21069,6 +21069,20 @@
 
 	  switch (action.type) {
 
+	    case 'EMAIL_SUCCESS':
+	      return _extends({}, state, {
+	        name: "",
+	        email: "",
+	        message: "",
+	        success: true,
+	        failure: false
+	      });
+
+	    case 'EMAIL_FAILURE':
+	      return _extends({}, state, {
+	        failure: true
+	      });
+
 	    case 'NAME_CHANGE':
 	      return _extends({}, state, {
 	        name: action.name
@@ -21099,8 +21113,8 @@
 	  name: '',
 	  email: '',
 	  message: '',
-	  sucess: false,
-	  incorrect: false
+	  success: false,
+	  failure: false
 	};
 
 /***/ },
@@ -21180,6 +21194,9 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.sendEmail = sendEmail;
+	exports.emailSuccess = emailSuccess;
+	exports.emailFailure = emailFailure;
 	exports.changeName = changeName;
 	exports.changeEmail = changeEmail;
 	exports.changeMessage = changeMessage;
@@ -21190,27 +21207,47 @@
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-	// export function sendEmail(formData) {
-	//   return function(dispatch){
-	//     dispatch(successEmail())
+	function sendEmail(name, email, message) {
 
-	//     let request = new Request('contact/', {
-	//       method: 'POST',
-	//       headers: new Headers({
-	//         'Accept': 'application/json',
-	//         'Content-Type': 'application/json'
-	//       }),
-	//       credentials: 'same-origin',
-	//       body: JSON.stringify({
-	//         name: formData.name,
-	//         email: formData.email,
-	//         message: formData.message
-	//       })
-	//     });
+	  var request = new Request('contact/', {
+	    method: 'POST',
+	    headers: new Headers({
+	      'Accept': 'application/json',
+	      'Content-Type': 'application/json'
+	    }),
+	    credentials: 'same-origin',
+	    body: JSON.stringify({
+	      name: name,
+	      email: email,
+	      message: message
+	    })
+	  });
 
-	//     return fetch()
-	//   }
-	// }
+	  return function (dispatch) {
+	    return fetch(request).then(function (res) {
+	      if (!(res.status >= 200 && res.status < 300)) {
+	        throw error;
+	      }
+	    }).then(function () {
+	      dispatch(emailSuccess());
+	    }).catch(function (error) {
+	      console.log('catching error ' + error);
+	      dispatch(emailFailure());
+	    });
+	  };
+	}
+
+	function emailSuccess() {
+	  return {
+	    type: types.EMAIL_SUCCESS
+	  };
+	}
+
+	function emailFailure() {
+	  return {
+	    type: types.EMAIL_FAILURE
+	  };
+	}
 
 	function changeName(name) {
 	  return {
@@ -22861,15 +22898,10 @@
 	  handleSubmit: function handleSubmit(e) {
 	    console.log('submitted');
 	    e.preventDefault();
-
-	    $.ajax({
-	      type: 'POST',
-	      url: '/contact/',
-	      data: $('#contact-form').serialize(),
-	      success: function success(res) {
-	        console.log('e-mail sent');
-	      }
-	    });
+	    this.props.sendEmail(this.props.name, this.props.email, this.props.message);
+	    $('#contact-form-name').val("");
+	    $('#contact-form-mail').val("");
+	    $('#contact-form-message').val("");
 	  },
 	  handleNameChange: function handleNameChange(e) {
 	    this.props.changeName(e.target.value);
@@ -22946,7 +22978,12 @@
 	            'button',
 	            { className: 'btn confirm', type: 'submit', onClick: this.handleSubmit },
 	            'Send'
-	          )
+	          ),
+	          this.props.success ? _react2.default.createElement(
+	            'span',
+	            null,
+	            'Message Sent!'
+	          ) : null
 	        )
 	      )
 	    );
