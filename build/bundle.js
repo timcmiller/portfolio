@@ -58,17 +58,22 @@
 
 	var _reactRedux = __webpack_require__(169);
 
-	var _index = __webpack_require__(177);
+	var _reduxThunk = __webpack_require__(177);
+
+	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
+
+	var _index = __webpack_require__(178);
 
 	var _index2 = _interopRequireDefault(_index);
 
-	var _portfolio_app = __webpack_require__(180);
+	var _portfolio_app = __webpack_require__(181);
 
 	var _portfolio_app2 = _interopRequireDefault(_portfolio_app);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var store = (0, _redux.createStore)(_index2.default);
+	var createStoreWithMiddleware = (0, _redux.applyMiddleware)(_reduxThunk2.default)(_redux.createStore);
+	var store = createStoreWithMiddleware(_index2.default);
 
 	_reactDom2.default.render(_react2.default.createElement(
 	  _reactRedux.Provider,
@@ -21000,6 +21005,29 @@
 
 /***/ },
 /* 177 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports['default'] = thunkMiddleware;
+	function thunkMiddleware(_ref) {
+	  var dispatch = _ref.dispatch;
+	  var getState = _ref.getState;
+
+	  return function (next) {
+	    return function (action) {
+	      if (typeof action === 'function') {
+	        return action(dispatch, getState);
+	      }
+
+	      return next(action);
+	    };
+	  };
+	}
+
+/***/ },
+/* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21010,7 +21038,7 @@
 
 	var _redux = __webpack_require__(159);
 
-	var _main_reducer = __webpack_require__(178);
+	var _main_reducer = __webpack_require__(179);
 
 	var _main_reducer2 = _interopRequireDefault(_main_reducer);
 
@@ -21023,7 +21051,7 @@
 	exports.default = rootReducer;
 
 /***/ },
-/* 178 */
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21041,9 +21069,40 @@
 
 	  switch (action.type) {
 
-	    case 'UPDATE_MODALS':
+	    case 'EMAIL_SUCCESS':
 	      return _extends({}, state, {
-	        refs: action.refs
+	        name: "",
+	        email: "",
+	        message: "",
+	        success: true,
+	        btnDisabled: true,
+	        failure: false,
+	        nameInvalid: false,
+	        emailInvalid: false,
+	        messageInvalid: false
+	      });
+
+	    case 'EMAIL_FAILURE':
+	      return _extends({}, state, {
+	        failure: true,
+	        nameInvalid: action.nameInvalid,
+	        emailInvalid: action.emailInvalid,
+	        messageInvalid: action.messageInvalid
+	      });
+
+	    case 'NAME_CHANGE':
+	      return _extends({}, state, {
+	        name: action.name
+	      });
+
+	    case 'EMAIL_CHANGE':
+	      return _extends({}, state, {
+	        email: action.email
+	      });
+
+	    case 'MESSAGE_CHANGE':
+	      return _extends({}, state, {
+	        message: action.message
 	      });
 
 	    default:
@@ -21051,19 +21110,26 @@
 	  }
 	};
 
-	var _action_types = __webpack_require__(179);
+	var _action_types = __webpack_require__(180);
 
 	var types = _interopRequireWildcard(_action_types);
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	var initialState = {
-	  heading: 'Hello World',
-	  refs: {}
+	  name: '',
+	  email: '',
+	  message: '',
+	  success: false,
+	  btnDisabled: false,
+	  failure: false,
+	  nameInvalid: false,
+	  emailInvalid: false,
+	  messageInvalid: false
 	};
 
 /***/ },
-/* 179 */
+/* 180 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -21071,10 +21137,18 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	var UPDATE_MODALS = exports.UPDATE_MODALS = 'UPDATE_MODALS';
+	//contact form
+	//network actions
+	var EMAIL_SUCCESS = exports.EMAIL_SUCCESS = 'EMAIL_SUCCESS';
+	var EMAIL_FAILURE = exports.EMAIL_FAILURE = 'EMAIL_FAILURE';
+	var EMAIL_SEND = exports.EMAIL_SEND = 'EMAIL_SEND';
+	//UI actions
+	var NAME_CHANGE = exports.NAME_CHANGE = 'NAME_CHANGE';
+	var EMAIL_CHANGE = exports.EMAIL_CHANGE = 'EMAIL_CHANGE';
+	var MESSAGE_CHANGE = exports.MESSAGE_CHANGE = 'MESSAGE_CHANGE';
 
 /***/ },
-/* 180 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21093,11 +21167,11 @@
 
 	var _redux = __webpack_require__(159);
 
-	var _user_interface_actions = __webpack_require__(181);
+	var _user_interface_actions = __webpack_require__(182);
 
 	var userInterfaceActions = _interopRequireWildcard(_user_interface_actions);
 
-	var _dashboard = __webpack_require__(182);
+	var _dashboard = __webpack_require__(183);
 
 	var _dashboard2 = _interopRequireDefault(_dashboard);
 
@@ -21123,7 +21197,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(PortfolioApp);
 
 /***/ },
-/* 181 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21131,23 +21205,112 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.updateModals = updateModals;
+	exports.validateForm = validateForm;
+	exports.sendEmail = sendEmail;
+	exports.emailSuccess = emailSuccess;
+	exports.emailFailure = emailFailure;
+	exports.changeName = changeName;
+	exports.changeEmail = changeEmail;
+	exports.changeMessage = changeMessage;
 
-	var _action_types = __webpack_require__(179);
+	var _action_types = __webpack_require__(180);
 
 	var types = _interopRequireWildcard(_action_types);
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-	function updateModals(refs) {
+	function validateForm(name, email, message) {
+
+	  return function (dispatch) {
+	    var nameInvalid = false;
+	    var emailInvalid = false;
+	    var messageInvalid = false;
+
+	    if (name.length < 1 || !name.match(/^[a-zA-Z ]*$/)) {
+	      nameInvalid = true;
+	      return dispatch(emailFailure(nameInvalid, emailInvalid, messageInvalid));
+	    }
+	    if (email.length < 5 || !email.match(/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i)) {
+	      emailInvalid = true;
+	      return dispatch(emailFailure(nameInvalid, emailInvalid, messageInvalid));
+	    }
+	    if (message.length < 1) {
+	      messageInvalid = true;
+	      return dispatch(emailFailure(nameInvalid, emailInvalid, messageInvalid));
+	    }
+
+	    dispatch(sendEmail(name, email, message));
+	  };
+	}
+
+	function sendEmail(name, email, message) {
+
+	  var request = new Request('contact/', {
+	    method: 'POST',
+	    headers: new Headers({
+	      'Accept': 'application/json',
+	      'Content-Type': 'application/json'
+	    }),
+	    credentials: 'same-origin',
+	    body: JSON.stringify({
+	      name: name,
+	      email: email,
+	      message: message
+	    })
+	  });
+
+	  return function (dispatch) {
+	    return fetch(request).then(function (res) {
+	      if (!(res.status >= 200 && res.status < 300)) {
+	        throw error;
+	      }
+	    }).then(function () {
+	      dispatch(emailSuccess());
+	    }).catch(function (error) {
+	      console.log('catching error ' + error);
+	      dispatch(emailFailure());
+	    });
+	  };
+	}
+
+	function emailSuccess() {
 	  return {
-	    type: types.UPDATE_MODALS,
-	    refs: refs
+	    type: types.EMAIL_SUCCESS
+	  };
+	}
+
+	function emailFailure(nameInvalid, emailInvalid, messageInvalid) {
+	  return {
+	    type: types.EMAIL_FAILURE,
+	    nameInvalid: nameInvalid,
+	    emailInvalid: emailInvalid,
+	    messageInvalid: messageInvalid
+	  };
+	}
+
+	function changeName(name) {
+	  return {
+	    type: types.NAME_CHANGE,
+	    name: name
+	  };
+	}
+
+	function changeEmail(email) {
+	  return {
+	    type: types.EMAIL_CHANGE,
+	    email: email
+	  };
+	}
+
+	function changeMessage(message) {
+	  return {
+	    type: types.MESSAGE_CHANGE,
+	    message: message
 	  };
 	}
 
 /***/ },
-/* 182 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21164,15 +21327,15 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _body = __webpack_require__(183);
+	var _body = __webpack_require__(184);
 
 	var _body2 = _interopRequireDefault(_body);
 
-	var _header = __webpack_require__(192);
+	var _header = __webpack_require__(193);
 
 	var _header2 = _interopRequireDefault(_header);
 
-	var _footer = __webpack_require__(191);
+	var _footer = __webpack_require__(192);
 
 	var _footer2 = _interopRequireDefault(_footer);
 
@@ -21191,7 +21354,7 @@
 	});
 
 /***/ },
-/* 183 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21204,23 +21367,23 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _home = __webpack_require__(184);
+	var _home = __webpack_require__(185);
 
 	var _home2 = _interopRequireDefault(_home);
 
-	var _project_list = __webpack_require__(185);
+	var _project_list = __webpack_require__(186);
 
 	var _project_list2 = _interopRequireDefault(_project_list);
 
-	var _contact = __webpack_require__(189);
+	var _contact = __webpack_require__(190);
 
 	var _contact2 = _interopRequireDefault(_contact);
 
-	var _landing = __webpack_require__(190);
+	var _landing = __webpack_require__(191);
 
 	var _landing2 = _interopRequireDefault(_landing);
 
-	var _footer = __webpack_require__(191);
+	var _footer = __webpack_require__(192);
 
 	var _footer2 = _interopRequireDefault(_footer);
 
@@ -21254,7 +21417,7 @@
 	});
 
 /***/ },
-/* 184 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21286,7 +21449,7 @@
 	        _react2.default.createElement(
 	          "p",
 	          { className: "intro" },
-	          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec efficitur sapien erat, at rutrum est ultrices vel. Sed non arcu consectetur, ornare metus eu, elementum diam. Sed a pharetra mauris. Curabitur in justo non quam consectetur ornare eget nec nisl. Integer ut rhoncus massa. Curabitur nec ultricies lacus. Quisque sit amet iaculis odio. In nec enim nulla. Etiam sem orci, tincidunt id suscipit id, facilisis ac massa. Maecenas nec posuere neque. Curabitur id sapien dui. Suspendisse quam leo, bibendum vel erat vel, congue auctor odio. Vestibulum ac tincidunt erat. Etiam sit amet elit orci. Nam cursus dolor ut neque vestibulum euismod. In quis dapibus sem. Nam iaculis ornare lacus, sodales mattis sapien tempor id. Donec scelerisque elementum augue, in mollis eros tincidunt id. Pellentesque ultricies dapibus ante sed egestas. Maecenas sed ligula non enim tincidunt tempus. Proin gravida nisi et purus volutpat venenatis."
+	          "I am a recent graduate from Code Fellows JavaScript Development seeking employment as a software developer. I previously was working in high end fashion retail managing multi-million dollar departments."
 	        ),
 	        _react2.default.createElement("img", { className: "profile-img", src: "images/profile.png", alt: "Tim C Miller" })
 	      )
@@ -21295,7 +21458,7 @@
 	});
 
 /***/ },
-/* 185 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21308,11 +21471,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _projects = __webpack_require__(186);
+	var _projects = __webpack_require__(187);
 
 	var _projects2 = _interopRequireDefault(_projects);
 
-	var _project = __webpack_require__(187);
+	var _project = __webpack_require__(188);
 
 	var _project2 = _interopRequireDefault(_project);
 
@@ -21342,7 +21505,7 @@
 	});
 
 /***/ },
-/* 186 */
+/* 187 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -21387,7 +21550,7 @@
 	exports.default = projects;
 
 /***/ },
-/* 187 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21400,7 +21563,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _marked = __webpack_require__(188);
+	var _marked = __webpack_require__(189);
 
 	var _marked2 = _interopRequireDefault(_marked);
 
@@ -21462,7 +21625,7 @@
 	});
 
 /***/ },
-/* 188 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
@@ -22754,7 +22917,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 189 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22771,18 +22934,23 @@
 
 	exports.default = _react2.default.createClass({
 	  displayName: 'contact',
+	  componentDidMount: function componentDidMount() {
+	    $('#contact-form-name').val(this.props.name);
+	    $('#contact-form-mail').val(this.props.mail);
+	    $('#contact-form-message').val(this.props.message);
+	  },
 	  handleSubmit: function handleSubmit(e) {
-	    console.log('submitted');
 	    e.preventDefault();
-
-	    $.ajax({
-	      type: 'POST',
-	      url: '/contact/',
-	      data: $('#contact-form').serialize(),
-	      success: function success(res) {
-	        console.log('e-mail sent');
-	      }
-	    });
+	    this.props.validateForm(this.props.name, this.props.email, this.props.message);
+	  },
+	  handleNameChange: function handleNameChange(e) {
+	    this.props.changeName(e.target.value);
+	  },
+	  handleEmailChange: function handleEmailChange(e) {
+	    this.props.changeEmail(e.target.value);
+	  },
+	  handleMessageChange: function handleMessageChange(e) {
+	    this.props.changeMessage(e.target.value);
 	  },
 	  render: function render() {
 	    return _react2.default.createElement(
@@ -22807,33 +22975,62 @@
 	              { className: 'input-box', forHTML: 'contact-form-name' },
 	              _react2.default.createElement(
 	                'span',
-	                null,
+	                { className: this.props.nameInvalid ? "invalidText" : null },
 	                '*Name:'
 	              ),
-	              _react2.default.createElement('input', { className: 'input', id: 'contact-form-name', type: 'text', name: 'name', required: true })
+	              _react2.default.createElement('input', {
+	                className: this.props.nameInvalid ? "input invalid" : "input",
+	                id: 'contact-form-name',
+	                type: 'text',
+	                name: 'name',
+	                onChange: this.handleNameChange })
 	            ),
 	            _react2.default.createElement(
 	              'label',
 	              { className: 'input-box', forHTML: 'contact-form-mail' },
 	              _react2.default.createElement(
 	                'span',
-	                null,
+	                { className: this.props.emailInvalid ? "invalidText" : null },
 	                '*Email:'
 	              ),
-	              _react2.default.createElement('input', { className: 'input', type: 'email', id: 'contact-form-mail', name: 'email', required: true })
+	              _react2.default.createElement('input', {
+	                className: this.props.emailInvalid ? "input invalid" : "input",
+	                type: 'email',
+	                id: 'contact-form-mail',
+	                name: 'email',
+	                onChange: this.handleEmailChange })
 	            )
 	          ),
 	          _react2.default.createElement(
 	            'label',
 	            { className: 'input-box', forHTML: 'contact-form-message' },
-	            'Message:',
-	            _react2.default.createElement('textarea', { className: 'input', id: 'contact-form-message', name: 'message', required: true })
+	            _react2.default.createElement(
+	              'span',
+	              { className: this.props.messageInvalid ? "invalidText" : null },
+	              '*Message:'
+	            ),
+	            _react2.default.createElement('textarea', {
+	              className: this.props.messageInvalid ? "input invalid" : "input",
+	              id: 'contact-form-message',
+	              name: 'message',
+	              onChange: this.handleMessageChange })
 	          ),
 	          _react2.default.createElement(
 	            'button',
-	            { className: 'btn confirm', type: 'submit', onClick: this.handleSubmit },
+	            { className: this.props.btnDisabled ? "btn disabled" : "btn", type: 'submit', onClick: this.handleSubmit, disabled: this.props.btnDisabled },
+	            _react2.default.createElement('span', { className: 'icon-mail2' }),
 	            'Send'
-	          )
+	          ),
+	          this.props.success ? _react2.default.createElement(
+	            'span',
+	            { className: 'center' },
+	            'Message Sent!'
+	          ) : null,
+	          this.props.failure ? _react2.default.createElement(
+	            'span',
+	            { className: 'invalidText center' },
+	            'Please fill in all required fields and use a valid emaild address'
+	          ) : null
 	        )
 	      )
 	    );
@@ -22841,7 +23038,7 @@
 	});
 
 /***/ },
-/* 190 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22925,7 +23122,7 @@
 	});
 
 /***/ },
-/* 191 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -23006,7 +23203,7 @@
 	});
 
 /***/ },
-/* 192 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23019,7 +23216,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _resume = __webpack_require__(193);
+	var _resume = __webpack_require__(194);
 
 	var _resume2 = _interopRequireDefault(_resume);
 
@@ -23068,7 +23265,7 @@
 	});
 
 /***/ },
-/* 193 */
+/* 194 */
 /***/ function(module, exports) {
 
 	'use strict';
