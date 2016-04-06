@@ -21075,12 +21075,19 @@
 	        email: "",
 	        message: "",
 	        success: true,
-	        failure: false
+	        btnDisabled: true,
+	        failure: false,
+	        nameInvalid: false,
+	        emailInvalid: false,
+	        messageInvalid: false
 	      });
 
 	    case 'EMAIL_FAILURE':
 	      return _extends({}, state, {
-	        failure: true
+	        failure: true,
+	        nameInvalid: action.nameInvalid,
+	        emailInvalid: action.emailInvalid,
+	        messageInvalid: action.messageInvalid
 	      });
 
 	    case 'NAME_CHANGE':
@@ -21114,7 +21121,11 @@
 	  email: '',
 	  message: '',
 	  success: false,
-	  failure: false
+	  btnDisabled: false,
+	  failure: false,
+	  nameInvalid: false,
+	  emailInvalid: false,
+	  messageInvalid: false
 	};
 
 /***/ },
@@ -21129,7 +21140,7 @@
 	//contact form
 	//network actions
 	var EMAIL_SUCCESS = exports.EMAIL_SUCCESS = 'EMAIL_SUCCESS';
-	var EMAIL_FALIURE = exports.EMAIL_FALIURE = 'EMAIL_FALIURE';
+	var EMAIL_FAILURE = exports.EMAIL_FAILURE = 'EMAIL_FAILURE';
 	var EMAIL_SEND = exports.EMAIL_SEND = 'EMAIL_SEND';
 	//UI actions
 	var NAME_CHANGE = exports.NAME_CHANGE = 'NAME_CHANGE';
@@ -21194,6 +21205,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.validateForm = validateForm;
 	exports.sendEmail = sendEmail;
 	exports.emailSuccess = emailSuccess;
 	exports.emailFailure = emailFailure;
@@ -21206,6 +21218,30 @@
 	var types = _interopRequireWildcard(_action_types);
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	function validateForm(name, email, message) {
+
+	  return function (dispatch) {
+	    var nameInvalid = false;
+	    var emailInvalid = false;
+	    var messageInvalid = false;
+
+	    if (name.length < 1 || !name.match(/^[a-zA-Z ]*$/)) {
+	      nameInvalid = true;
+	      return dispatch(emailFailure(nameInvalid, emailInvalid, messageInvalid));
+	    }
+	    if (email.length < 5 || !email.match(/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i)) {
+	      emailInvalid = true;
+	      return dispatch(emailFailure(nameInvalid, emailInvalid, messageInvalid));
+	    }
+	    if (message.length < 1) {
+	      messageInvalid = true;
+	      return dispatch(emailFailure(nameInvalid, emailInvalid, messageInvalid));
+	    }
+
+	    dispatch(sendEmail(name, email, message));
+	  };
+	}
 
 	function sendEmail(name, email, message) {
 
@@ -21243,9 +21279,12 @@
 	  };
 	}
 
-	function emailFailure() {
+	function emailFailure(nameInvalid, emailInvalid, messageInvalid) {
 	  return {
-	    type: types.EMAIL_FAILURE
+	    type: types.EMAIL_FAILURE,
+	    nameInvalid: nameInvalid,
+	    emailInvalid: emailInvalid,
+	    messageInvalid: messageInvalid
 	  };
 	}
 
@@ -21410,7 +21449,7 @@
 	        _react2.default.createElement(
 	          "p",
 	          { className: "intro" },
-	          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec efficitur sapien erat, at rutrum est ultrices vel. Sed non arcu consectetur, ornare metus eu, elementum diam. Sed a pharetra mauris. Curabitur in justo non quam consectetur ornare eget nec nisl. Integer ut rhoncus massa. Curabitur nec ultricies lacus. Quisque sit amet iaculis odio. In nec enim nulla. Etiam sem orci, tincidunt id suscipit id, facilisis ac massa. Maecenas nec posuere neque. Curabitur id sapien dui. Suspendisse quam leo, bibendum vel erat vel, congue auctor odio. Vestibulum ac tincidunt erat. Etiam sit amet elit orci. Nam cursus dolor ut neque vestibulum euismod. In quis dapibus sem. Nam iaculis ornare lacus, sodales mattis sapien tempor id. Donec scelerisque elementum augue, in mollis eros tincidunt id. Pellentesque ultricies dapibus ante sed egestas. Maecenas sed ligula non enim tincidunt tempus. Proin gravida nisi et purus volutpat venenatis."
+	          "I am a recent graduate from Code Fellows JavaScript Development seeking employment as a software developer. I previously was working in high end fashion retail managing multi-million dollar departments."
 	        ),
 	        _react2.default.createElement("img", { className: "profile-img", src: "images/profile.png", alt: "Tim C Miller" })
 	      )
@@ -22895,13 +22934,14 @@
 
 	exports.default = _react2.default.createClass({
 	  displayName: 'contact',
+	  componentDidMount: function componentDidMount() {
+	    $('#contact-form-name').val(this.props.name);
+	    $('#contact-form-mail').val(this.props.mail);
+	    $('#contact-form-message').val(this.props.message);
+	  },
 	  handleSubmit: function handleSubmit(e) {
-	    console.log('submitted');
 	    e.preventDefault();
-	    this.props.sendEmail(this.props.name, this.props.email, this.props.message);
-	    $('#contact-form-name').val("");
-	    $('#contact-form-mail').val("");
-	    $('#contact-form-message').val("");
+	    this.props.validateForm(this.props.name, this.props.email, this.props.message);
 	  },
 	  handleNameChange: function handleNameChange(e) {
 	    this.props.changeName(e.target.value);
@@ -22935,54 +22975,61 @@
 	              { className: 'input-box', forHTML: 'contact-form-name' },
 	              _react2.default.createElement(
 	                'span',
-	                null,
+	                { className: this.props.nameInvalid ? "invalidText" : null },
 	                '*Name:'
 	              ),
 	              _react2.default.createElement('input', {
-	                className: 'input',
+	                className: this.props.nameInvalid ? "input invalid" : "input",
 	                id: 'contact-form-name',
 	                type: 'text',
 	                name: 'name',
-	                onChange: this.handleNameChange,
-	                required: true })
+	                onChange: this.handleNameChange })
 	            ),
 	            _react2.default.createElement(
 	              'label',
 	              { className: 'input-box', forHTML: 'contact-form-mail' },
 	              _react2.default.createElement(
 	                'span',
-	                null,
+	                { className: this.props.emailInvalid ? "invalidText" : null },
 	                '*Email:'
 	              ),
 	              _react2.default.createElement('input', {
-	                className: 'input',
+	                className: this.props.emailInvalid ? "input invalid" : "input",
 	                type: 'email',
 	                id: 'contact-form-mail',
 	                name: 'email',
-	                onChange: this.handleEmailChange,
-	                required: true })
+	                onChange: this.handleEmailChange })
 	            )
 	          ),
 	          _react2.default.createElement(
 	            'label',
 	            { className: 'input-box', forHTML: 'contact-form-message' },
-	            '*Message:',
+	            _react2.default.createElement(
+	              'span',
+	              { className: this.props.messageInvalid ? "invalidText" : null },
+	              '*Message:'
+	            ),
 	            _react2.default.createElement('textarea', {
-	              className: 'input',
+	              className: this.props.messageInvalid ? "input invalid" : "input",
 	              id: 'contact-form-message',
 	              name: 'message',
-	              onChange: this.handleMessageChange,
-	              required: true })
+	              onChange: this.handleMessageChange })
 	          ),
 	          _react2.default.createElement(
 	            'button',
-	            { className: 'btn confirm', type: 'submit', onClick: this.handleSubmit },
+	            { className: this.props.btnDisabled ? "btn disabled" : "btn", type: 'submit', onClick: this.handleSubmit, disabled: this.props.btnDisabled },
+	            _react2.default.createElement('span', { className: 'icon-mail2' }),
 	            'Send'
 	          ),
 	          this.props.success ? _react2.default.createElement(
 	            'span',
-	            null,
+	            { className: 'center' },
 	            'Message Sent!'
+	          ) : null,
+	          this.props.failure ? _react2.default.createElement(
+	            'span',
+	            { className: 'invalidText center' },
+	            'Please fill in all required fields and use a valid emaild address'
 	          ) : null
 	        )
 	      )

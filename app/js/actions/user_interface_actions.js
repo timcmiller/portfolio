@@ -2,6 +2,26 @@ import * as types from '../constants/action_types';
 
 export function validateForm(name, email, message) {
 
+  return function(dispatch) {
+    var nameInvalid = false;
+    var emailInvalid = false;
+    var messageInvalid = false;
+
+    if(name.length < 1 || !name.match(/^[a-zA-Z ]*$/)) {
+      nameInvalid = true;
+      return dispatch(emailFailure(nameInvalid, emailInvalid, messageInvalid));
+    }
+    if(email.length < 5 || !email.match(/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i)) {
+      emailInvalid = true;
+      return dispatch(emailFailure(nameInvalid, emailInvalid, messageInvalid));
+    }
+    if(message.length < 1) {
+      messageInvalid = true;
+      return dispatch(emailFailure(nameInvalid, emailInvalid, messageInvalid));
+    }
+
+    dispatch(sendEmail(name, email, message));
+  };
 }
 
 export function sendEmail(name, email, message) {
@@ -43,9 +63,12 @@ export function emailSuccess() {
   };
 }
 
-export function emailFailure() {
+export function emailFailure(nameInvalid, emailInvalid, messageInvalid) {
   return {
-    type: types.EMAIL_FAILURE
+    type: types.EMAIL_FAILURE,
+    nameInvalid,
+    emailInvalid,
+    messageInvalid
   };
 }
 

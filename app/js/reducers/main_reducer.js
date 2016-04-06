@@ -5,6 +5,7 @@ const initialState = {
   email: '',
   message: '',
   success: false,
+  btnDisabled: false,
   failure: false,
   nameInvalid: false,
   emailInvalid: false,
@@ -22,13 +23,20 @@ export default function(state = initialState, action) {
         email: "",
         message: "",
         success: true,
-        failure: false
+        btnDisabled: true,
+        failure: false,
+        nameInvalid: false,
+        emailInvalid: false,
+        messageInvalid: false
       };
 
     case 'EMAIL_FAILURE':
       return {
         ...state,
-        failure: true
+        failure: true,
+        nameInvalid: action.nameInvalid,
+        emailInvalid: action.emailInvalid,
+        messageInvalid: action.messageInvalid
       };
 
     case 'NAME_CHANGE':

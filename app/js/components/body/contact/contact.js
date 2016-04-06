@@ -2,13 +2,15 @@ import React from 'react';
 
 export default React.createClass({
 
+  componentDidMount() {
+    $('#contact-form-name').val(this.props.name);
+    $('#contact-form-mail').val(this.props.mail);
+    $('#contact-form-message').val(this.props.message);
+  },
+
   handleSubmit(e) {
-    console.log('submitted');
     e.preventDefault();
     this.props.validateForm(this.props.name, this.props.email, this.props.message);
-    $('#contact-form-name').val("");
-    $('#contact-form-mail').val("");
-    $('#contact-form-message').val("");
   },
 
   handleNameChange(e) {
@@ -33,10 +35,10 @@ export default React.createClass({
           <form id="contact-form" className="contact-form">
             <div className="container row style-1">
               <label className="input-box" forHTML="contact-form-name">
-                <span>*Name:</span>
+                <span className={this.props.nameInvalid ? "invalidText" : null}>*Name:</span>
 
                 <input
-                  className="input"
+                  className={this.props.nameInvalid ? "input invalid" : "input"}
                   id="contact-form-name"
                   type="text"
                   name="name"
@@ -44,10 +46,10 @@ export default React.createClass({
 
               </label>
               <label className="input-box" forHTML="contact-form-mail">
-                <span>*Email:</span>
+                <span className={this.props.emailInvalid ? "invalidText" : null}>*Email:</span>
 
                 <input
-                className="input"
+                className={this.props.emailInvalid ? "input invalid" : "input"}
                 type="email"
                 id="contact-form-mail"
                 name="email"
@@ -56,18 +58,21 @@ export default React.createClass({
               </label>
             </div>
             <label className="input-box" forHTML="contact-form-message">
-              *Message:
+              <span className={this.props.messageInvalid ? "invalidText" : null}>*Message:</span>
 
               <textarea
-                className="input"
+                className={this.props.messageInvalid ? "input invalid" : "input"}
                 id="contact-form-message"
                 name="message"
                 onChange={this.handleMessageChange}>
               </textarea>
 
             </label>
-            <button className="btn confirm" type="submit" onClick={this.handleSubmit}>Send</button>
-            {this.props.success ? <span>Message Sent!</span> : null}
+            <button className={this.props.btnDisabled ? "btn disabled" : "btn"} type="submit" onClick={this.handleSubmit} disabled={this.props.btnDisabled}>
+              <span className="icon-mail2"></span>Send
+            </button>
+            {this.props.success ? <span className="center">Message Sent!</span> : null}
+            {this.props.failure ? <span className="invalidText center">Please fill in all required fields and use a valid emaild address</span> : null}
           </form>
         </div>
       </section>
