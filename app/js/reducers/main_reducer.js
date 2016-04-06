@@ -1,18 +1,33 @@
 import * as types from './../constants/action_types';
 
 const initialState = {
-  heading: 'Hello World',
-  refs: {}
+  name: '',
+  email: '',
+  message: '',
+  sucess: false,
+  incorrect: false
 };
 
 export default function(state = initialState, action) {
 
   switch(action.type) {
 
-    case 'UPDATE_MODALS':
+    case 'NAME_CHANGE':
       return {
         ...state,
-        refs: action.refs
+        name: action.name
+      };
+
+    case 'EMAIL_CHANGE':
+      return {
+        ...state,
+        email: action.email
+      };
+
+    case 'MESSAGE_CHANGE':
+      return {
+        ...state,
+        message: action.message
       };
 
     default:

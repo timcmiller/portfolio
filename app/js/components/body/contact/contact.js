@@ -5,7 +5,7 @@ export default React.createClass({
   handleSubmit(e) {
     console.log('submitted');
     e.preventDefault();
-
+    this.
     $.ajax({
       type: 'POST',
       url: '/contact/',
@@ -14,6 +14,18 @@ export default React.createClass({
         console.log('e-mail sent');
       }
     });
+  },
+
+  handleNameChange(e) {
+    this.props.changeName(e.target.value);
+  },
+
+  handleEmailChange(e) {
+    this.props.changeEmail(e.target.value);
+  },
+
+  handleMessageChange(e) {
+    this.props.changeMessage(e.target.value);
   },
 
   render() {
@@ -27,16 +39,40 @@ export default React.createClass({
             <div className="container row style-1">
               <label className="input-box" forHTML="contact-form-name">
                 <span>*Name:</span>
-                <input className="input" id="contact-form-name" type="text" name="name" required/>
+
+                <input
+                  className="input"
+                  id="contact-form-name"
+                  type="text"
+                  name="name"
+                  onChange={this.handleNameChange}
+                  required/>
+
               </label>
               <label className="input-box" forHTML="contact-form-mail">
                 <span>*Email:</span>
-                <input className="input" type="email" id="contact-form-mail" name="email" required/>
+
+                <input
+                className="input"
+                type="email"
+                id="contact-form-mail"
+                name="email"
+                onChange={this.handleEmailChange}
+                required/>
+
               </label>
             </div>
             <label className="input-box" forHTML="contact-form-message">
-              Message:
-              <textarea className="input" id="contact-form-message" name="message" required></textarea>
+              *Message:
+
+              <textarea
+                className="input"
+                id="contact-form-message"
+                name="message"
+                onChange={this.handleMessageChange}
+                required>
+              </textarea>
+
             </label>
             <button className="btn confirm" type="submit" onClick={this.handleSubmit}>Send</button>
           </form>

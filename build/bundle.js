@@ -58,17 +58,22 @@
 
 	var _reactRedux = __webpack_require__(169);
 
-	var _index = __webpack_require__(177);
+	var _reduxThunk = __webpack_require__(177);
+
+	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
+
+	var _index = __webpack_require__(178);
 
 	var _index2 = _interopRequireDefault(_index);
 
-	var _portfolio_app = __webpack_require__(180);
+	var _portfolio_app = __webpack_require__(181);
 
 	var _portfolio_app2 = _interopRequireDefault(_portfolio_app);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var store = (0, _redux.createStore)(_index2.default);
+	var createStoreWithMiddleware = (0, _redux.applyMiddleware)(_reduxThunk2.default)(_redux.createStore);
+	var store = createStoreWithMiddleware(_index2.default);
 
 	_reactDom2.default.render(_react2.default.createElement(
 	  _reactRedux.Provider,
@@ -21000,6 +21005,29 @@
 
 /***/ },
 /* 177 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports['default'] = thunkMiddleware;
+	function thunkMiddleware(_ref) {
+	  var dispatch = _ref.dispatch;
+	  var getState = _ref.getState;
+
+	  return function (next) {
+	    return function (action) {
+	      if (typeof action === 'function') {
+	        return action(dispatch, getState);
+	      }
+
+	      return next(action);
+	    };
+	  };
+	}
+
+/***/ },
+/* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21010,7 +21038,7 @@
 
 	var _redux = __webpack_require__(159);
 
-	var _main_reducer = __webpack_require__(178);
+	var _main_reducer = __webpack_require__(179);
 
 	var _main_reducer2 = _interopRequireDefault(_main_reducer);
 
@@ -21023,7 +21051,7 @@
 	exports.default = rootReducer;
 
 /***/ },
-/* 178 */
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21041,9 +21069,19 @@
 
 	  switch (action.type) {
 
-	    case 'UPDATE_MODALS':
+	    case 'NAME_CHANGE':
 	      return _extends({}, state, {
-	        refs: action.refs
+	        name: action.name
+	      });
+
+	    case 'EMAIL_CHANGE':
+	      return _extends({}, state, {
+	        email: action.email
+	      });
+
+	    case 'MESSAGE_CHANGE':
+	      return _extends({}, state, {
+	        message: action.message
 	      });
 
 	    default:
@@ -21051,19 +21089,22 @@
 	  }
 	};
 
-	var _action_types = __webpack_require__(179);
+	var _action_types = __webpack_require__(180);
 
 	var types = _interopRequireWildcard(_action_types);
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	var initialState = {
-	  heading: 'Hello World',
-	  refs: {}
+	  name: '',
+	  email: '',
+	  message: '',
+	  sucess: false,
+	  incorrect: false
 	};
 
 /***/ },
-/* 179 */
+/* 180 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -21071,10 +21112,18 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	var UPDATE_MODALS = exports.UPDATE_MODALS = 'UPDATE_MODALS';
+	//contact form
+	//network actions
+	var EMAIL_SUCCESS = exports.EMAIL_SUCCESS = 'EMAIL_SUCCESS';
+	var EMAIL_FALIURE = exports.EMAIL_FALIURE = 'EMAIL_FALIURE';
+	var EMAIL_SEND = exports.EMAIL_SEND = 'EMAIL_SEND';
+	//UI actions
+	var NAME_CHANGE = exports.NAME_CHANGE = 'NAME_CHANGE';
+	var EMAIL_CHANGE = exports.EMAIL_CHANGE = 'EMAIL_CHANGE';
+	var MESSAGE_CHANGE = exports.MESSAGE_CHANGE = 'MESSAGE_CHANGE';
 
 /***/ },
-/* 180 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21093,11 +21142,11 @@
 
 	var _redux = __webpack_require__(159);
 
-	var _user_interface_actions = __webpack_require__(181);
+	var _user_interface_actions = __webpack_require__(182);
 
 	var userInterfaceActions = _interopRequireWildcard(_user_interface_actions);
 
-	var _dashboard = __webpack_require__(182);
+	var _dashboard = __webpack_require__(183);
 
 	var _dashboard2 = _interopRequireDefault(_dashboard);
 
@@ -21123,7 +21172,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(PortfolioApp);
 
 /***/ },
-/* 181 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21131,23 +21180,61 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.updateModals = updateModals;
+	exports.changeName = changeName;
+	exports.changeEmail = changeEmail;
+	exports.changeMessage = changeMessage;
 
-	var _action_types = __webpack_require__(179);
+	var _action_types = __webpack_require__(180);
 
 	var types = _interopRequireWildcard(_action_types);
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-	function updateModals(refs) {
+	// export function sendEmail(formData) {
+	//   return function(dispatch){
+	//     dispatch(successEmail())
+
+	//     let request = new Request('contact/', {
+	//       method: 'POST',
+	//       headers: new Headers({
+	//         'Accept': 'application/json',
+	//         'Content-Type': 'application/json'
+	//       }),
+	//       credentials: 'same-origin',
+	//       body: JSON.stringify({
+	//         name: formData.name,
+	//         email: formData.email,
+	//         message: formData.message
+	//       })
+	//     });
+
+	//     return fetch()
+	//   }
+	// }
+
+	function changeName(name) {
 	  return {
-	    type: types.UPDATE_MODALS,
-	    refs: refs
+	    type: types.NAME_CHANGE,
+	    name: name
+	  };
+	}
+
+	function changeEmail(email) {
+	  return {
+	    type: types.EMAIL_CHANGE,
+	    email: email
+	  };
+	}
+
+	function changeMessage(message) {
+	  return {
+	    type: types.MESSAGE_CHANGE,
+	    message: message
 	  };
 	}
 
 /***/ },
-/* 182 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21164,15 +21251,15 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _body = __webpack_require__(183);
+	var _body = __webpack_require__(184);
 
 	var _body2 = _interopRequireDefault(_body);
 
-	var _header = __webpack_require__(192);
+	var _header = __webpack_require__(193);
 
 	var _header2 = _interopRequireDefault(_header);
 
-	var _footer = __webpack_require__(191);
+	var _footer = __webpack_require__(192);
 
 	var _footer2 = _interopRequireDefault(_footer);
 
@@ -21191,7 +21278,7 @@
 	});
 
 /***/ },
-/* 183 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21204,23 +21291,23 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _home = __webpack_require__(184);
+	var _home = __webpack_require__(185);
 
 	var _home2 = _interopRequireDefault(_home);
 
-	var _project_list = __webpack_require__(185);
+	var _project_list = __webpack_require__(186);
 
 	var _project_list2 = _interopRequireDefault(_project_list);
 
-	var _contact = __webpack_require__(189);
+	var _contact = __webpack_require__(190);
 
 	var _contact2 = _interopRequireDefault(_contact);
 
-	var _landing = __webpack_require__(190);
+	var _landing = __webpack_require__(191);
 
 	var _landing2 = _interopRequireDefault(_landing);
 
-	var _footer = __webpack_require__(191);
+	var _footer = __webpack_require__(192);
 
 	var _footer2 = _interopRequireDefault(_footer);
 
@@ -21254,7 +21341,7 @@
 	});
 
 /***/ },
-/* 184 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21295,7 +21382,7 @@
 	});
 
 /***/ },
-/* 185 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21308,11 +21395,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _projects = __webpack_require__(186);
+	var _projects = __webpack_require__(187);
 
 	var _projects2 = _interopRequireDefault(_projects);
 
-	var _project = __webpack_require__(187);
+	var _project = __webpack_require__(188);
 
 	var _project2 = _interopRequireDefault(_project);
 
@@ -21342,7 +21429,7 @@
 	});
 
 /***/ },
-/* 186 */
+/* 187 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -21387,7 +21474,7 @@
 	exports.default = projects;
 
 /***/ },
-/* 187 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21400,7 +21487,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _marked = __webpack_require__(188);
+	var _marked = __webpack_require__(189);
 
 	var _marked2 = _interopRequireDefault(_marked);
 
@@ -21462,7 +21549,7 @@
 	});
 
 /***/ },
-/* 188 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
@@ -22754,7 +22841,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 189 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22784,6 +22871,15 @@
 	      }
 	    });
 	  },
+	  handleNameChange: function handleNameChange(e) {
+	    this.props.changeName(e.target.value);
+	  },
+	  handleEmailChange: function handleEmailChange(e) {
+	    this.props.changeEmail(e.target.value);
+	  },
+	  handleMessageChange: function handleMessageChange(e) {
+	    this.props.changeMessage(e.target.value);
+	  },
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'section',
@@ -22810,7 +22906,13 @@
 	                null,
 	                '*Name:'
 	              ),
-	              _react2.default.createElement('input', { className: 'input', id: 'contact-form-name', type: 'text', name: 'name', required: true })
+	              _react2.default.createElement('input', {
+	                className: 'input',
+	                id: 'contact-form-name',
+	                type: 'text',
+	                name: 'name',
+	                onChange: this.handleNameChange,
+	                required: true })
 	            ),
 	            _react2.default.createElement(
 	              'label',
@@ -22820,14 +22922,25 @@
 	                null,
 	                '*Email:'
 	              ),
-	              _react2.default.createElement('input', { className: 'input', type: 'email', id: 'contact-form-mail', name: 'email', required: true })
+	              _react2.default.createElement('input', {
+	                className: 'input',
+	                type: 'email',
+	                id: 'contact-form-mail',
+	                name: 'email',
+	                onChange: this.handleEmailChange,
+	                required: true })
 	            )
 	          ),
 	          _react2.default.createElement(
 	            'label',
 	            { className: 'input-box', forHTML: 'contact-form-message' },
-	            'Message:',
-	            _react2.default.createElement('textarea', { className: 'input', id: 'contact-form-message', name: 'message', required: true })
+	            '*Message:',
+	            _react2.default.createElement('textarea', {
+	              className: 'input',
+	              id: 'contact-form-message',
+	              name: 'message',
+	              onChange: this.handleMessageChange,
+	              required: true })
 	          ),
 	          _react2.default.createElement(
 	            'button',
@@ -22841,7 +22954,7 @@
 	});
 
 /***/ },
-/* 190 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22925,7 +23038,7 @@
 	});
 
 /***/ },
-/* 191 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -23006,7 +23119,7 @@
 	});
 
 /***/ },
-/* 192 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23019,7 +23132,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _resume = __webpack_require__(193);
+	var _resume = __webpack_require__(194);
 
 	var _resume2 = _interopRequireDefault(_resume);
 
@@ -23068,7 +23181,7 @@
 	});
 
 /***/ },
-/* 193 */
+/* 194 */
 /***/ function(module, exports) {
 
 	'use strict';
