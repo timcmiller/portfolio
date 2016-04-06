@@ -5,21 +5,21 @@ var wellknown = require('nodemailer-wellknown');
 
 var contactRouter = module.exports = exports = express.Router();
 
-var config = wellknown('Hotmail');
+var config = wellknown('Gmail');
 
 var transporter = nodemailer.createTransport({
-  service: 'hotmail',
+  service: 'gmail',
   auth: {
-    user: 'timcmiller@live.com',
+    user: 'timmwebsite@gmail.com',
     pass: process.env.MAIL_PW
   }
 });
 
 contactRouter.post('/', function(req, res) {
   var mailOptions = {
-    from: {name: 'Portfolio Page', address: 'timcmiller@live.com'},
+    from: {name: 'Portfolio Page', address: 'timmwebsite@gmail.com'},
     to: {name: 'Tim Miller', address: 'timcmiller@live.com'},
-    subject: 'Message from Portfolio contact form',
+    subject: 'Message from Portfolio Contact Form',
     text: 'Name: ' + req.body.name + '\n' + 'Body: ' +
     req.body.message  + '\n' + '\n' + 'You may contact this sender at: ' +
     req.body.email
