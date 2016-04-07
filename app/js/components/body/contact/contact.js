@@ -68,9 +68,7 @@ export default React.createClass({
               </textarea>
 
             </label>
-            <button className={this.props.btnDisabled ? "btn disabled" : "btn"} type="submit" onClick={this.handleSubmit} disabled={this.props.btnDisabled}>
-              <span className="icon-mail2"></span>Send
-            </button>
+            <button className={this.props.btnDisabled ? "btn icon-mail2 disabled" : "btn icon-mail2"} type="submit" onClick={this.handleSubmit} disabled={this.props.btnDisabled}></button>
             {this.props.success ? <span className="center">Message Sent!</span> : null}
             {this.props.failure ? <span className="invalidText center">Please fill in all required fields and use a valid emaild address</span> : null}
           </form>
