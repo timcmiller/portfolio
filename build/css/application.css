@@ -500,8 +500,7 @@ li.active {
 
 .title {
   font-size: 50px;
-  margin-right: 20px;
-  color: #343434; }
+  margin-right: 20px; }
 
 .subtitle {
   font-size: 30px;
@@ -593,7 +592,11 @@ li.active {
     color: white; }
 
 h2 {
-  margin: 10px; }
+  margin: 10px;
+  color: #343434; }
+
+p {
+  color: #343434; }
 
 ul {
   list-style-type: none; }
