@@ -27,6 +27,11 @@ gulp.task('fonts:dev', function() {
   .pipe(gulp.dest('build/css/fonts'));
 });
 
+gulp.task('favicon:dev', function() {
+  return gulp.src('./app/favicon/favicon.ico')
+  .pipe(gulp.dest('build'));
+});
+
 gulp.task('fullpagejs:dev', function() {
   return gulp.src('./app/js/lib/fullPage/jquery.fullPage.js')
   .pipe(gulp.dest('build'));
@@ -59,7 +64,7 @@ gulp.task('webpack:dev', function() {
   .pipe(gulp.dest('build/'));
 });
 
-gulp.task('build', ['static:dev', 'webpack:dev', 'fullpage']);
+gulp.task('build', ['static:dev', 'webpack:dev', 'fullpage', 'favicon:dev']);
 gulp.task('fullpage', ['fullpagejs:dev', 'fullpagecss:dev']);
 gulp.task('styles', ['sass:dev', 'images:dev', 'fonts:dev']);
 gulp.task('default', ['build', 'styles']);
