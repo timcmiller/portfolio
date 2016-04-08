@@ -407,8 +407,6 @@ th {
   padding: 12px 18px;
   margin: 10px 13px;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
   align-items: center;
   text-align: center;
   line-height: 1.3;

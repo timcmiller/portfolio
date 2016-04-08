@@ -1,3 +1,4 @@
+import 'isomorphic-fetch';
 import * as types from '../constants/action_types';
 
 export function validateForm(name, email, message) {
