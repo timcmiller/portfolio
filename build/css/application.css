@@ -471,7 +471,8 @@ li.active {
 
 .container {
   display: flex;
-  justify-content: space-around; }
+  justify-content: space-around;
+  align-items: center; }
 
 .main-header {
   display: flex;
@@ -527,7 +528,7 @@ li.active {
   flex-direction: row; }
 
 .projects {
-  margin: 40px 0px; }
+  margin: 40px 30px; }
 
 .project-container {
   display: flex;

@@ -10,7 +10,7 @@ export default React.createClass({
         </h2>
         <div className="container">
           <p className="intro">
-            I am a recent graduate from Code Fellows JavaScript Development seeking employment as a software developer. I previously was working in high end fashion retail managing multi-million dollar departments.
+            I am a software developer who likes to build things using JavaScript, Ruby, HTML and CSS. As a kid, I dreamed of becoming the mathematician to discover the last number of pi (it's 5). I like to drink whiskey, ride motorcycles and trick my wife into playing board games with me.
           </p>
           <img className="profile-img" src="images/profile.png" alt="Tim C Miller" />
         </div>
