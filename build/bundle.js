@@ -21924,7 +21924,7 @@
 	});
 	var projects = [{
 	  _id: 4,
-	  title: 'Tropy',
+	  title: 'Trophy',
 	  description: 'Academy Award mobile app, built to track film nominations for the 2016 Oscars. Available on the ExponentJS  platform for Android and iOS.',
 	  tech: ['JavaScript', 'React Native', 'Redux', 'ES6', 'ExponentJS', 'iOS', 'Android'],
 	  img: 'oscar-app.PNG',
