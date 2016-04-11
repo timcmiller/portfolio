@@ -1,12 +1,12 @@
 const projects = [
     {
       _id: 4,
-      title: 'Oscar App',
+      title: 'Tropy',
       description: 'Academy Award mobile app, built to track film nominations for the 2016 Oscars. Available on the ExponentJS  platform for Android and iOS.',
       tech: ['JavaScript', 'React Native', 'Redux', 'ES6', 'ExponentJS', 'iOS', 'Android'],
       img: 'oscar-app.PNG',
       links: [
-        {site: 'github', icon:'icon-github', link:'https://github.com/timcmiller/oscar_app'}
+        {site: 'github', icon:'icon-github', link:'https://github.com/timcmiller/Trophy'}
         ],
       year: 2016
     },
