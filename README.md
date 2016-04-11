@@ -1,7 +1,7 @@
-TIM C MILLER PORTFOLIO
+#Portfolio
 
 ==============================
 
-Simple portfolio for showcasing my work.
+Portofolio page from Tim C Miller made with React and Redux.
 
-You can find the prototype at timcmiller.herokuapp.com
+www.timcmiller.com
