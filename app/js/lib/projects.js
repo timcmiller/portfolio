@@ -1,7 +1,18 @@
 const projects = [
     {
+      _id: 5,
+      title: 'Stadium Journey',
+      description: 'List and Page view of a stadium database, built as a contract project for Scout Media',
+      tech: ['JavaScript', 'HTML/CSS', 'C#', 'React', 'Jest', 'Elastic Search', 'Google Maps API'],
+      img: 'scout.png',
+      links: [
+        {site:'web', icon:'icon-sphere', link:'http://www.scout.com/stadium-journey/all-stadiums'}
+      ],
+      year: 2016
+    },
+    {
       _id: 4,
-      title: 'Tropy',
+      title: 'Trophy',
       description: 'Academy Award mobile app, built to track film nominations for the 2016 Oscars. Available on the ExponentJS  platform for Android and iOS.',
       tech: ['JavaScript', 'React Native', 'Redux', 'ES6', 'ExponentJS', 'iOS', 'Android'],
       img: 'oscar-app.PNG',
